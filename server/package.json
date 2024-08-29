@@ -1,0 +1,25 @@
+{
+  "name": "noopro-server",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-token": "^1.0.9",
+    "mongoose": "^8.6.0",
+    "nodemailer": "^6.9.14",
+    "otp-genrator": "^1.0.1"
+  }
+}
