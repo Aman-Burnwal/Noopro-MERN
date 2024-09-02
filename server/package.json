@@ -1,6 +1,7 @@
 {
   "name": "noopro-server",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -20,6 +21,7 @@
     "jwt-token": "^1.0.9",
     "mongoose": "^8.6.0",
     "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
     "otp-genrator": "^1.0.1"
   }
 }
