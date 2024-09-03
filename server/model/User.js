@@ -38,6 +38,12 @@ const UserSchema = new mongoose.Schema({
         }
 
     ],
+    token: {
+        type: String
+    },
+    resetPasswordExpires: {
+        tyep: Date
+    },
     iamge: {
         type: String,
         required: true
