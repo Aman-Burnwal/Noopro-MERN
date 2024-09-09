@@ -44,11 +44,11 @@ const courseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category"
     },
-    studentEnrolled: {
+    studentEnrolled: [{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User"
-    },
+    }],
 })
 
 module.exports = mongoose.model("Course", courseSchema);
