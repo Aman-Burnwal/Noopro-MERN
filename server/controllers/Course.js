@@ -5,7 +5,7 @@ const { uploadImageToCloudinay } = require("../utils/imageUploader");
 
 
 // create cource handler
-exports.CreateCourse = async (req, res) => {
+exports.createCourse = async (req, res) => {
 
     try {
 
@@ -85,7 +85,7 @@ exports.CreateCourse = async (req, res) => {
 
 //get all course
 
-exports.ShowAllCourses = async (req, res) => {
+exports.showAllCourses = async (req, res) => {
 
     try {
 
