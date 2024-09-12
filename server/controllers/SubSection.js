@@ -1,4 +1,4 @@
-import { uploadImageToCloudinay } from "../utils/imageUploader";
+const { uploadImageToCloudinay } = require("../utils/imageUploader");
 
 const SubSection = require("../model/SubSection");
 const Section = require("../model/Section");

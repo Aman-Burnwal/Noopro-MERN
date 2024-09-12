@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const {instance} = require("../config/razorPay");
 const Course = require("../model/Course");

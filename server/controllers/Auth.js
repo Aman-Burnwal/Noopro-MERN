@@ -1,6 +1,6 @@
-import { passwordUpdated } from "../mail/templates/passwordUpdate";
-import Profile from "../model/Profile";
-import mailSender from "../utils/mailSender";
+const { passwordUpdated } = require("../mail/templates/passwordUpdate");
+const Profile =  require("../model/Profile");
+const mailSender = require("../utils/mailSender");
 
 const OTP = require("../model/Otp");
 const User = require("../model/User")

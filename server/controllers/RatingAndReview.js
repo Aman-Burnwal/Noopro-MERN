@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import Category from "../model/Category";
+const mongoose = require( "mongoose");
+const Category = require ("../model/Category");
 
 const RatingAndReview = require("../model/RatingAndReview");
 const Course = require("../model/Course");
