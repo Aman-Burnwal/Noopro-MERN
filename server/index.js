@@ -2,9 +2,9 @@ const express = require("express");
 
 const app = express();
 
-// const courseRoute  = require("./routers/Course");
-// const paymentRoute  = require("./routers/Payment");
-// const profileRoute  = require("./routers/Profile");
+const courseRoute  = require("./routers/Course");
+const paymentRoute  = require("./routers/Payment");
+const profileRoute  = require("./routers/Profile");
 const userRoute  = require("./routers/User");
 
 const database = require("./config/database");
@@ -43,9 +43,9 @@ app.use(
 cloudinaryConnect();
 
 app.use("/api/v1/auth", userRoute);
-// app.use("/api/v1/profile", profileRoute);
-// app.use("/api/v1/course", courseRoute);
-// app.use("/api/v1/payment", paymentRoute);
+app.use("/api/v1/profile", profileRoute);
+app.use("/api/v1/course", courseRoute);
+app.use("/api/v1/payment", paymentRoute);
 
 
 // defalut route

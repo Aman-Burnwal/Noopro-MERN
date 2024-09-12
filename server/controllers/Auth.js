@@ -156,7 +156,7 @@ exports.signUP = async (req, res) => {
 
 // Login
 
-module.Login = async(req, res) => {
+exports.Login = async(req, res) => {
     try {
         const {email, password} = req.body;
 
@@ -224,7 +224,7 @@ module.Login = async(req, res) => {
 
 // changePassword
 
-module.ChangePassword = async(req, res) => {
+exports.ChangePassword = async(req, res) => {
 
     try {
         
