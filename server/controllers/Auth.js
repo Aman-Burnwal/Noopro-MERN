@@ -18,9 +18,10 @@ exports.sendOTP = async (req, res) => {
 
         // check if user already exist
 
-        const checkUserPresent = await User.find({email});
+        const checkUserPresent = await User.find({email:email});
+        // console.log("user is persent or not " ,checkUserPresent);
         // check kar lo kahi ye user hame bewkoof banane ki kosis to nhi kar rha h dubara registration karne ke liye
-        if(checkUserPresent) return res.status(401).json({
+        if(checkUserPresent.length) return res.status(401).json({
             success: false,
             message: "Arre ji aap to already register ho phir dubara register kyu kar rhe ho\n Yadi dubara try kiya register karne ke liye to dabase se delate ho ke purnjanam lena padega re baba"
             
@@ -35,7 +36,7 @@ exports.sendOTP = async (req, res) => {
             specialChars: false,
         })
 
-        console.log("Genrated Otp is ", otp)
+        // console.log("Genrated Otp is ", otp)
         // check for unique otp
         let result = await OTP.findOne({otp: otp});
 
@@ -52,10 +53,10 @@ exports.sendOTP = async (req, res) => {
         // create an entry in db for OTP
 
         const otpBody = await OTP.create(otpPayload);
-        console.log(otpBody);
+        // console.group("mail", otpBody);
 
         res.status(200).json({
-            success: false,
+            success: true,
             message: "OTP to bina dikkat ke chala gaya dadu"
         })
 

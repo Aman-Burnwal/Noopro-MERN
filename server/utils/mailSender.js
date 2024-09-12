@@ -3,22 +3,22 @@ const nodemailer = require("nodemailer");
 const mailSender = async (email, title, body) => {
     try {
         let transpoter = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
+            host: 'smtp.gmail.com',
+            port: 465,
             auth: {
-                user: 'yolanda17@ethereal.email',
-                pass: 'TNFqbp81EkhKw8fb7K'
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASS
             }
         })
 
         let info = await transpoter.sendMail({
-            from: "Noopro || edu website",
+            from: process.env.EMAIL_PASS, // Include email address in from
             to: email,
             subject: title,
             html: body
-        })
-
-        console.log(info);
+        });
+        console.groupCollapsed(email, body, title)
+        // console.log(info);
 
         return info;
     } catch (error) {
