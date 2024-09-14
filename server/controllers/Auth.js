@@ -146,7 +146,8 @@ exports.signUP = async (req, res) => {
 
         return res.status(200).json({
             success:true,
-            message: "Bhai mubarak ho tum to register ho gaye :)"
+            message: "Bhai mubarak ho tum to register ho gaye :)",
+            user,
         })
 
 
@@ -203,14 +204,14 @@ exports.Login = async(req, res) => {
                 exprires: new Date(Date.now() + 3 * 24 * 3600 * 1000),
                 httpOnly: true,
             }
-            res.cookie("token", token, options).staus(200).json({
+            res.cookie("token", token, options).status(200).json({
                 success: true,
                 token, 
                 user, 
                 message: "Arrey shabash login ho gaya tu to........🙌"
             })
         }else {
-            res.staus(401).json({
+            res.status(401).json({
                 success: false,
                 message: "Password agar sahi deta na to abhi tu login kar jata"
             })
