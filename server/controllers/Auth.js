@@ -53,7 +53,8 @@ exports.sendOTP = async (req, res) => {
         // create an entry in db for OTP
 
         const otpBody = await OTP.create(otpPayload);
-        // console.group("mail", otpBody);
+        // console.group("new otp", otpBody);
+
 
         res.status(200).json({
             success: true,
@@ -103,25 +104,28 @@ exports.signUP = async (req, res) => {
 
         const existingUser = await User.find({email});
 
-        if(existingUser) return res.status(400).json({
+        if(existingUser.length) return res.status(400).json({
             success: false,
-            message: "Tu to pahle se register h phir kahe ko phir se register kar rha h "
+            message: "Tu to pahle se register h phir kahe ko phir se register kar rha h ",
+            existingUser,
         })
 
 
         // find most recent otp stored for the user
 
         const recentOTP = await OTP.find({email}).sort({createdAt: -1}).limit(1);
-        console.log("recentOTP", recentOTP);
+        // console.log("recentOTP", recentOTP);
 
         // validateOTP
 
-        if(recentOTP.length == 0) return res.status(400).json({
+        if(!recentOTP.length) return res.status(400).json({
             success: false,
             message: "OTP to mila hi nhi :("
         })
 
-        if(otp != recentOTP.otp) res.status(400).json({
+        // console.log(recentOTP[0].otp, otp)
+
+        if(otp != recentOTP[0].otp) res.status(400).json({
             success: false,
             message: "OTP to match hi nhi huwa ji"
         })
@@ -133,8 +137,8 @@ exports.signUP = async (req, res) => {
         const profileDetails = await Profile.create({gender:null, dateOfBirth: null, about: null, contactNumber: null});
 
         // create entry in Db
-        const user = new User({
-            firstName, lastName, email, contactNumber, accountType, password:hashPassword,
+        const user =  User.create({
+            firstName:firstName, lastName: lastName, email: email, contactNumber, accountType, password:hashPassword,
             additonDetail: profileDetails._id,
             
             iamge:`https://ui-avatars.com/api/?name=${firstName}+${lastName}`

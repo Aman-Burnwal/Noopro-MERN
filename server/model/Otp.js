@@ -12,7 +12,7 @@ const otpSchema = new mongoose.Schema({
     },
     otp: {
         type: String,
-        require: true,
+       require: true,
     },
     createdAt: {
         type: Date,
@@ -26,7 +26,7 @@ async function sendVerificationEmail(email, otp) {
     try {
         const mailResponse = await mailSender(email, "Verification email from Noopro", otpTemplate(otp));
 
-        console.log("mail sent successfully", mailResponse);
+        // console.log("mail sent successfully", mailResponse);
     } catch (error) {
         console.log("error in sending email", error);
         throw error;

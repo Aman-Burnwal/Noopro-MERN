@@ -17,7 +17,7 @@ const mailSender = async (email, title, body) => {
             subject: title,
             html: body
         });
-        console.groupCollapsed(email, body, title)
+        // console.groupCollapsed(email, body, title)
         // console.log(info);
 
         return info;
