@@ -10,11 +10,11 @@ exports.resetPasswordToken = async (req, res) => {
 
     try {
         // get email from req ki body
-        const email = req.body;
+        const {email} = req.body;
     
         // check user for this email
 
-        const user = User.findOne({email: email});
+        const user = await User.findOne({ email});
 
         if(!user) return res.status(401).json({
             success: false,
@@ -22,11 +22,13 @@ exports.resetPasswordToken = async (req, res) => {
         })
 
         // generate token 
+        // console.log(user)
         const token = crypto.randomUUID();
 
         // update user by adding token and expiration time
         const updatedDetails = await User.findOneAndUpdate(
-            {   email: email,
+            {email},
+            {   
                 token: token,
                 resetPasswordExpires: Date.now() + 5 * 60 * 1000,
             },
@@ -36,17 +38,18 @@ exports.resetPasswordToken = async (req, res) => {
 
 
         // send mail containing the url
-        await mailSender(email, "Password reset Link", "Password reset Link" + url)
+        await mailSender(email, "Password reset Link", "Password reset Link:  " + url)
 
         
 
         // return response
         return res.json({
             success: true,
-            message: "Email sent successfully and password change successfully"
+            message: "Email sent successfully and password change successfully",
+            updatedDetails
         })
     } catch (error) {
-        console.error("error in reset password", error);
+        // console.error("error in reset password", error);
         return res.status(500).json({
             success: false,
             message: "Somewent went wrong in Password change"
@@ -66,7 +69,7 @@ exports.resetPassword = async(req, res) => {
     try {
 
         // data fetch
-        const {password, confirmPassword, token} = req.body;
+        const {password, confirmPassword, email, token} = req.body;
         //validation
 
         if(password !== confirmPassword) return res.json({
@@ -96,12 +99,12 @@ exports.resetPassword = async(req, res) => {
         const hashPassword = await bcrypt.hash(password, 10);
 
 
-        // update password
-        await User.findOneAndUpdate({token: token}, {password: hashPassword}, {new: true})
+        // update password and set the token null so that it can be use only once 
+        await User.findOneAndUpdate({token: token}, {password: hashPassword, token: null}, {new: true})
         // return response
         return res.status(200).json({
             success: true,
-            message: "Passowrd to reset ho gaya successfully ab isko yaad rakhna bahi "
+            message: "Password to successfully change ho gaya ab vidya kasam khaw ki password hamesa yaad rakhega"
         })
 
         
@@ -109,7 +112,7 @@ exports.resetPassword = async(req, res) => {
 
         console.error("error in reseting password")
 
-        return res.staus(500).json({
+        return res.status(500).json({
             success: false,
             message: "Error aa gaya password reset karne me"
         })
