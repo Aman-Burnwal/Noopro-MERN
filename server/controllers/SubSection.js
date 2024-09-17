@@ -48,7 +48,8 @@ exports.createSubSection = async (req, res) => {
 
         return res.status(500).json({
             success: false,
-            message: "error in creating the subsection"
+            message: "error in creating the subsection",
+            error: error.message
         })
         
     }

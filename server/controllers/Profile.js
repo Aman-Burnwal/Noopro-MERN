@@ -85,7 +85,7 @@ exports.getAllUserDetails = async (req, res) => {
 
         const id = req.user.id;
 
-        const userDetails = await User.findById(id).populate("additonDetail").exec();
+        const userDetails = await User.findById(id).populate("additonDetail").populate("courses").exec();
 
         return res.status(200).json({
             success: true,

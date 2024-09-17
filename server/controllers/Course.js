@@ -1,3 +1,5 @@
+const Category = require( "../model/Category");
+
 const Course = require("../model/Course");
 const Tag = require("../model/Tag");
 const User = require("../model/User");
@@ -10,13 +12,13 @@ exports.createCourse = async (req, res) => {
     try {
 
         // fetch data
-        const { courseName, coureDiscription, whatYouWillLearn, price, tag } = req.body;
+        const { courseName, coureDiscription, whatYouWillLearn, price, tag, category } = req.body;
 
         // get thumbnail
         const thumbnail = req.files.thumbnailImage;
 
         // validation
-        if (!courseName || !coureDiscription || !whatYouWillLearn || !price || tag) return res.status(400).json({
+        if (!courseName || !coureDiscription || !whatYouWillLearn || !price || !tag || !category) return res.status(400).json({
             success: false,
             message: "All fields are required",
         })
@@ -32,7 +34,7 @@ exports.createCourse = async (req, res) => {
         })
 
         // check given tag is valid or not 
-        const tagDetails = await Tag.findById(tag);
+        const tagDetails = await Category.findById({_id:category});
 
         if (!tagDetails) return res.status(400).json({
             success: false,
@@ -66,7 +68,7 @@ exports.createCourse = async (req, res) => {
         // todo HW
         // return response
 
-        return res.stauts(200).json({
+        return res.status(200).json({
             success: true,
             message: "course created successfully"
         })
@@ -75,7 +77,7 @@ exports.createCourse = async (req, res) => {
     } catch (error) {
         console.error(error.message);
 
-        res.staus(500).json({
+        res.status(500).json({
             success: false,
             message: "Course create karne me kuchh to gadbad aa gaya dada"
         })
@@ -134,9 +136,6 @@ exports.getCourseDetails = async (req, res) => {
             .populate(
                 {
                     path: "courseContent",
-                    populate: {
-                        path: "subSection"
-                    }
                 }
             ).exec();
 
