@@ -6,11 +6,13 @@ const SectionSchema = new mongoose.Schema({
     sectionName : {
         type: String,
     },
-    SubSection: {
+    SubSection:[ 
+        {
         type: mongoose.Schema.Types.ObjectId,
         requried: true,
         ref: "SubSection"
-    }
+        }
+    ]
 
 })
 
