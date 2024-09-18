@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
+import BannerVideo from "../assets/Images/banner.mp4";
 import Higlighter from "../components/core/HomePage/Higlighter";
 import HiglightBtn from "../components/core/HomePage/HiglightBtn";
+
 
 const Home = () => {
   return (
@@ -33,7 +35,7 @@ const Home = () => {
                     </Link>
 
 
-                    {/* <h1>Empower Your Future with Coding Skills</h1> */}
+                   
 
                     <div className="flex flex-col justify-center items-center gap-2 ">
                         <div className="flex flex-row gap-2 text-4xl font-semibold">
@@ -50,6 +52,28 @@ const Home = () => {
                             <HiglightBtn text={"Learn more"} link={"/signUp"} active={false} />
                         </div>
                         
+                    </div>
+
+
+                    {/* video */}
+
+                    <div className="py-10 relative ">
+
+                        
+            
+                        <video
+
+                            className="drop-shadow-[7.5px_7.5px_rgba(255,255,255)] relative z-20 "
+                            src={BannerVideo} 
+                            muted 
+                            autoPlay 
+                            loop={Infinity} />
+
+                            <div className=" bg-gradient-to-b from-richblue-300   to-richblue-900
+                                        w-72 h-48 rounded-full blur-2xl 
+                                        absolute top-0 left-0 right-0  mx-auto z-10">
+
+                        </div>
                     </div>
 
 
