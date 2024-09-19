@@ -115,3 +115,7 @@ export const HomePageExplore = [
         ]
     },
 ]
+
+export const HomePageTags = [
+    "Free", "New to coding", "Most popular", "Skills paths" ,  "Career paths"
+]

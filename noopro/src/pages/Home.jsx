@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
-import { HiglightBtn, Higlighter, Preview } from "../utils/index"
+import { CourseCard, ExploreCourse, HiglightBtn, Higlighter, Preview } from "../utils/index"
 
 
 const Home = () => {
@@ -169,6 +169,9 @@ const Home = () => {
                         />
 
                     </div>
+
+
+                   <ExploreCourse />
 
 
 
