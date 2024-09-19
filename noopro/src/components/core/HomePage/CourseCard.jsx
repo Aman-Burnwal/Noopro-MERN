@@ -4,7 +4,7 @@ import { FcFlowChart } from "react-icons/fc";
 const CourseCard = ({heading, description, level, lessons , active}) => {
     return (
         <div className={`h-[300px] w-[310px] mt-10 px-5  py-5  font-inter  transition-all duration-200
-        ${active ? "shadow-[10px_10px_rgba(235,181,0,0.8)] text-richblack-800 bg-white": "text-white bg-richblue-800"}
+        ${active ? "shadow-[10px_10px_rgba(235,181,0,0.8)] text-richblack-800 bg-white": "text-white bg-richblue-800  border border-richblue-100"}
           rounded-sm flex flex-col justify-between cursor-pointer  hover:scale-95 `}>
 
             <div className="flex flex-col gap-3">
