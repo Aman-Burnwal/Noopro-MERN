@@ -129,6 +129,9 @@ export default {
         maxContent: "1260px",
         maxContentTab: "650px"
       },
+      backgroundImage: {
+        'hero-pattern': "url('./assets/Images/bghome.svg')",
+      }
     },
   },
   plugins: [],

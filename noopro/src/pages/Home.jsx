@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
-import { CourseCard, ExploreCourse, HiglightBtn, Higlighter, Preview } from "../utils/index"
+import { ExploreCourse, HiglightBtn, Higlighter, Preview, TimelineHomeSection } from "../utils/index"
 
 
 const Home = () => {
@@ -170,14 +170,7 @@ const Home = () => {
 
                     </div>
 
-
-                   <ExploreCourse />
-
-
-
-
-
-
+                    <ExploreCourse />
 
                 </div>
 
@@ -186,6 +179,35 @@ const Home = () => {
 
 
             {/* section 2 */}
+
+            <div className="w-full bg-richblue-5 items-center mx-auto pb-5">
+
+                <div className=" bg-hero-pattern  h-[320px] -mt-20 ">
+                        
+                    <div className="flex flex-row gap-10 pt-44 pb-10 w-11/12 justify-center ml-10">
+                        <HiglightBtn
+                            text={
+                                <div className="flex flex-row gap-2 items-center">
+                                    Explore Full Catlog  <FaArrowRightLong />
+
+                                </div>
+                            }
+                            active={true}
+                            link={"/signUp"}
+                        />
+                        <HiglightBtn link={"/signUp"} text={"Learn more"} active={false} />
+                    </div>
+
+
+
+
+                </div>
+
+                <div className="w-11/12 mx-auto">
+                    <TimelineHomeSection />
+                    
+                </div>
+            </div>
 
             {/* section 3 */}
 

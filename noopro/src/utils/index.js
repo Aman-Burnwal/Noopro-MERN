@@ -4,13 +4,14 @@ import Home from "../pages/Home";
 import Preview from "../components/core/HomePage/Preview";
 import CourseCard from "../components/core/HomePage/CourseCard";
 import ExploreCourse from "../components/core/HomePage/ExploreCourse";
+import TimelineHomeSection from "../components/core/HomePage/TimelineHomeSection";
 import { HomePageTags , HomePageExplore } from "../data/homepage-explore";
 
 
 
 export {
     // homepage
-    HiglightBtn, Higlighter, Home, Preview, CourseCard, ExploreCourse,
+    HiglightBtn, Higlighter, Home, Preview, CourseCard, ExploreCourse, TimelineHomeSection,
     HomePageExplore, HomePageTags
 
     // 
