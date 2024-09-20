@@ -62,7 +62,7 @@ const TimelineHomeSection = () => {
                                 <div className="relative flex flex-row gap-5 font-inter font-semibold text-lg">
                                     <div className=" relative rounded-full bg-white  h-[54px] w-[54px]  
                                         border border-white flex justify-center items-center  ">
-                                        <img src={ele.logo} />
+                                        <img src={ele.logo}  loading={"lazy"}/>
                                     </div>
 
                                     <div className=" flex flex-col">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
-import { ExploreCourse, HiglightBtn, Higlighter, Preview, TimelineHomeSection } from "../utils/index"
+import { ExploreCourse, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
 
 
 const Home = () => {
@@ -205,11 +205,14 @@ const Home = () => {
 
                 <div className="w-11/12 mx-auto">
                     <TimelineHomeSection />
+                    <KnowMoreSection />
                     
                 </div>
             </div>
 
             {/* section 3 */}
+
+            
 
             {/* section 4 */}
 
