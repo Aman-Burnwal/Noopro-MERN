@@ -62,7 +62,7 @@ const TimelineHomeSection = () => {
                                 <div className="relative flex flex-row gap-5 font-inter font-semibold text-lg">
                                     <div className=" relative rounded-full bg-white  h-[54px] w-[54px]  
                                         border border-white flex justify-center items-center  ">
-                                        <img src={ele.logo}  loading={"lazy"}/>
+                                        <img src={ele.logo} loading={"lazy"} />
                                     </div>
 
                                     <div className=" flex flex-col">
@@ -87,21 +87,21 @@ const TimelineHomeSection = () => {
                     <img
                         width="714px"
                         height="515px"
-                        className="  translate-x-10 z-20 object-cover relative " src={TimelineImg} alt="Timeline-img" 
-                        
-                     />
+                        className="  translate-x-10 z-20 object-cover relative " src={TimelineImg} alt="Timeline-img"
+
+                    />
                     <div className=" hidden group-hover:block transition-all  duration-500 absolute min-h-80 
                         rounded-full   top-0  z-10 translate-x-7
-                        bg-gradient-to-tr px-20 from-blue-50  to-blue-100 blur-3xl"> 
-                        
+                        bg-gradient-to-tr px-20 from-blue-50  to-blue-100 blur-3xl">
+
                     </div>
 
                     <div className="hidden group-hover:block transition-all  duration-500  absolute h-48  rounded-full  right-0 -translate-y-72 z-10
-                        bg-gradient-to-tr px-20 from-blue-50  to-blue-200 blur-3xl"> 
-                        
+                        bg-gradient-to-tr px-20 from-blue-50  to-blue-200 blur-3xl">
+
                     </div>
-                    
-                    
+
+
                     <div className="flex flex-row justify-between items-center  gap-8 px-6 py-8 z-30
                                     font-inter  bg-caribbeangreen-800 w-[511px] relative
                                     -translate-y-14 translate-x-32">
@@ -110,8 +110,8 @@ const TimelineHomeSection = () => {
                             <p className=" text-caribbeangreen-300  font-medium">YEARS EXPERIENCES</p>
                         </div>
                         <div className="flex flex-row  gap-8">
-                        <div className=" font-bold text-richblack-5 text-4xl">256</div>
-                        <p className=" text-caribbeangreen-300  font-medium">TYPES OF COURSES</p>
+                            <div className=" font-bold text-richblack-5 text-4xl">256</div>
+                            <p className=" text-caribbeangreen-300  font-medium">TYPES OF COURSES</p>
                         </div>
                     </div>
                 </div>
