@@ -71,7 +71,7 @@ const TimelineHomeSection = () => {
                                     </div>
 
                                     {ind < 3 && <div
-                                        className=" left-7 top-16 absolute h-10 border border-l-richblack-50 border-dashed">
+                                        className=" left-7 top-16 absolute h-10 border border-l-richblue-100 border-dashed">
 
                                     </div>
                                     }
@@ -83,26 +83,28 @@ const TimelineHomeSection = () => {
                 </div>
 
                 {/* right */}
-                <div className=" relative mx-auto items-center">
+                <div className=" group relative mx-auto items-center">
                     <img
                         width="714px"
                         height="515px"
-                        className=" translate-x-10 z-20 object-cover relative" src={TimelineImg} alt="Timeline-img" 
+                        className="  translate-x-10 z-20 object-cover relative " src={TimelineImg} alt="Timeline-img" 
                         
                      />
-                    <div className=" absolute h-48  rounded-full  -translate-y-72 z-10
-                        bg-gradient-to-tr px-20 from-blue-50  to-blue-200 blur-3xl"> 
+                    <div className=" hidden group-hover:block transition-all  duration-500 absolute min-h-80 
+                        rounded-full   top-0  z-10 translate-x-7
+                        bg-gradient-to-tr px-20 from-blue-50  to-blue-100 blur-3xl"> 
                         
                     </div>
 
-                    <div className=" absolute h-48  rounded-full  right-0 -translate-y-72 z-10
+                    <div className="hidden group-hover:block transition-all  duration-500  absolute h-48  rounded-full  right-0 -translate-y-72 z-10
                         bg-gradient-to-tr px-20 from-blue-50  to-blue-200 blur-3xl"> 
                         
                     </div>
                     
                     
-                    <div className="flex flex-row justify-between items-center  gap-8 px-6 py-8
-                        font-inter  bg-caribbeangreen-800 w-[511px] -translate-y-14 translate-x-32">
+                    <div className="flex flex-row justify-between items-center  gap-8 px-6 py-8 z-30
+                                    font-inter  bg-caribbeangreen-800 w-[511px] relative
+                                    -translate-y-14 translate-x-32">
                         <div className="flex flex-row gap-8 border-r border-r-caribbeangreen-300">
                             <div className=" font-bold text-richblack-5 text-4xl">10</div>
                             <p className=" text-caribbeangreen-300  font-medium">YEARS EXPERIENCES</p>
