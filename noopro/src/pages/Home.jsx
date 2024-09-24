@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
-import { ExploreCourse, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
+import { BecomeInstructorSection, ExploreCourse, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
 
 
 const Home = () => {
@@ -113,7 +113,7 @@ const Home = () => {
                             }
                             btn2={{ active: false, text: "Learn more", link: "/signUp" }}
 
-                            align={"flex-row"}
+                            align={" flex-col md:flex-row gap-8"}
                             codeblock={"<!DOCTYPE html>\n<html lang='en'>\n<head>\n<meta charset='UTF-8' />\n<title>Noopro || edtech</title>\n</head>\n<body>\n <div id='root'></div>\n</body>\n</html>"}
                             codeColor={"text-yellow-300"}
                             backgroundImg={
@@ -154,7 +154,7 @@ const Home = () => {
                             }
                             btn2={{ active: false, text: "Learn more", link: "/signUp" }}
 
-                            align={"flex-row-reverse"}
+                            align={"flex-col md:flex-row-reverse gap-8 "}
                             codeblock={"<!DOCTYPE html>\n<html lang='en'>\n<head>\n<meta charset='UTF-8' />\n<title>Noopro || edtech</title>\n</head>\n<body>\n <div id='root'></div>\n</body>\n</html>"}
                             codeColor={"text-pink-300"}
                             backgroundImg={
@@ -183,7 +183,7 @@ const Home = () => {
             <div className="w-full bg-richblue-5 items-center mx-auto pb-5">
 
                 <div className=" bg-hero-pattern  h-[320px] -mt-20 ">
-                        
+
                     <div className="flex flex-row gap-10 pt-44 pb-10 w-11/12 justify-center ml-10">
                         <HiglightBtn
                             text={
@@ -206,13 +206,20 @@ const Home = () => {
                 <div className="w-11/12 mx-auto">
                     <TimelineHomeSection />
                     <KnowMoreSection />
-                    
+
                 </div>
             </div>
 
             {/* section 3 */}
 
-            
+            <div className=" w-full bg-richblack-900 p-1">
+                <div className=" w-11/12 mt-7 mx-auto">
+                    {/* become an insturctor sector */}
+                    <BecomeInstructorSection />
+                    {/* rating and reviws */}
+                </div>
+
+            </div>
 
             {/* section 4 */}
 
