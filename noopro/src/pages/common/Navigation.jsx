@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
-import { NavbarLinks, logo_nav } from "../../utils"
+import { NavbarLinks, ProfileDropDown, logo_nav } from "../../utils"
 import { IoIosArrowDown } from "react-icons/io";
+import { TiShoppingCart } from "react-icons/ti";
 import { useSelector } from "react-redux";
 
 
@@ -78,15 +79,59 @@ const Navigation = () => {
                     </nav>
 
 
+                    <div className="flex flex-row gap-4">
+
+                        {/* profile / login-logout */}
 
 
-                    {/* profile / login-logout */}
+                        {
+                            user && user.accountType != "Instructor" && (
+                                <Link to="/dashboard/cart" >
+                                    <div className="relative">
+                                        <TiShoppingCart />
+
+                                        {totalItem &&
+                                            <span>{totalItem}</span>
+                                        }
+
+                                    </div>
+
+                                </Link>
+                            )
+                        }
+
+                        {/* login / signup */}
+                        {
+                            token == null && (
+                                <Link to="/login">
+                                    <button className=" px-4 py-1  rounded-sm bg-richblue-500 border border-richblack-500">Log in</button>
+                                </Link>
+                            )
+                        }
+
+                        {
+                            token == null && (
+                                <Link to="/signup" >
+                                    <button className=" px-4 py-1  rounded-sm bg-richblue-500 border border-richblack-500">Sing up</button>
+                                </Link>
+                            )
+                        }
 
 
-                    {/* login / signup */}
 
-                    {/* profile */}
-                    {/* card  */}
+                        
+
+                        {/* profile */}
+                        {
+                            token != null && (
+                                <ProfileDropDown />
+                            )
+                        }
+                        {/* card  */}
+
+                    </div>
+
+
                 </div>
             </div>
 
