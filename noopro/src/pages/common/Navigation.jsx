@@ -3,6 +3,8 @@ import { NavbarLinks, ProfileDropDown, logo_nav } from "../../utils"
 import { IoIosArrowDown } from "react-icons/io";
 import { TiShoppingCart } from "react-icons/ti";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {categories} from "../../services/apis"
 
 
 const Navigation = () => {
@@ -11,8 +13,20 @@ const Navigation = () => {
     const token = useSelector((store) => store?.auth?.token)
     const user = useSelector((store) => store?.profile?.user)
     const totalItem = useSelector((store) => store?.cart?.totalItems);
+    const [subLinks, setSubLinks] = useState([]);
 
-    // console.log(user, totalItem);
+
+    const dataFetch = async () => {
+        fetch(categories.CATEGORIES_API)
+            .then(res => res.json())
+            .then(e => setSubLinks(e?.data))
+            .catch(e => console.log("error in fetching ", e))
+    }
+
+    useEffect(() => {
+        dataFetch()
+
+    }, [])
 
 
     return (
@@ -46,18 +60,40 @@ const Navigation = () => {
                                             key={item.title}>
                                             {item.title == "Catalog" ?
                                                 (
-                                                    <div className="relative">
-                                                        <div className="flex flex-row gap-[1px] items-center  cursor-pointer">
+                                                    <div className="relative group">
+                                                        <div className=" relative flex flex-row gap-[1px] items-center  cursor-pointer">
                                                             {item.title}
                                                             <IoIosArrowDown />
                                                         </div>
+                                                        {subLinks.length > 0 ?
+                                                            <div className=" invisible group-hover:visible">
+                                                                <div className="absolute  bg-richblack-5 w-[250px] 
+                                                            -translate-x-[20%] translate-y-[20px] transition-all duration-200 rounded
+                                                            ">
+                                                                    <ul className=" text-richblack-900 font-bold font-edu-sa  px-7 flex flex-col gap-4 py-4">
+                                                                        {subLinks.map((category, index) => {
+                                                                            return <Link to={`/catalog/${category?.name}`}  key={index}>
+                                                                            <li className=" cursor-pointer" > {category?.name}</li>
+                                                                            </Link> 
+                                                                        })}
+                                                     
 
-                                                        {/* <ul className="bg-white w-[290px] hidden group-hover:flex -ml-20 mt-[18px] rounded-lg text-richblack-900 absolute  flex-col gap-5 p-8">
-                                                            <li className="hover:bg-richblack-50 rounded-lg pl-4 py-2 pr-16 text-left">Python </li>
-                                                            <li className="hover:bg-richblack-50 rounded-lg pl-4 py-2 pr-16 text-left">Web devlopment</li>
-                                                            <li className="hover:bg-richblack-50 rounded-lg pl-4 py-2 pr-16 text-left">Linux</li>
-                                                            </ul> 
-                                                        */}
+                                                                    </ul>
+
+                                                                </div>
+
+                                                                <div className=" absolute w-0 h-0  translate-x-11  rounded-t
+                                                                                    border-l-[20px] border-l-transparent
+                                                                                    border-b-[20px] border-richblack-5
+                                                                                    border-r-[20px] border-r-transparent
+                                                                                        duration-200 transition-all"
+                                                                    >
+
+                                                                </div>
+                                                            </div>
+                                                            : <div> </div>}
+
+
 
 
 
@@ -119,7 +155,7 @@ const Navigation = () => {
 
 
 
-                        
+
 
                         {/* profile */}
                         {
