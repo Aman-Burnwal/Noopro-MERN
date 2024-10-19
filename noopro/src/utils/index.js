@@ -13,7 +13,8 @@ import {NavbarLinks} from "../data/navbar-links";
 import logo_nav from "../assets/Logo/Logo-Full-Light.png"
 import store from '../../store/store'
 import ProfileDropDown from "../components/core/Auth/ProfileDropDown";
-
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
 export {
     // homepage
@@ -21,5 +22,5 @@ export {
     HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store,
 
     // 
-    Navigation, ProfileDropDown,
+    Navigation, ProfileDropDown, Login, SignUp,
  }
