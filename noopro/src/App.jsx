@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { Navigation } from "./utils"
+import { Login, Navigation, SignUp } from "./utils"
 
 
 
@@ -11,6 +11,8 @@ const App = () => {
 
       <Routes >
         <Route path="/" element={<Home/>}/>
+        <Route path="/login"  element={<Login/>} />
+        <Route path="/signup"  element={<SignUp/>} />
         </Routes>
       
       
