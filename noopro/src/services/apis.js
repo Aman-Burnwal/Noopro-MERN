@@ -1,3 +1,6 @@
 export const categories = {
     CATEGORIES_API: import.meta.env.VITE_BASE_URL + "/course/showAllCategories"
 }
+
+export const SendOtpAPI = import.meta.env.VITE_BASE_URL + "/auth/sendotp";
+export const SignUpAPI = import.meta.env.VITE_BASE_URL + "/auth/signup";
