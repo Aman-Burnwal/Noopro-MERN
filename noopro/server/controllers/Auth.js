@@ -59,7 +59,7 @@ exports.sendOTP = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "OTP to bina dikkat ke chala gaya dadu",
-            otp,
+            // otp,
         })
 
 
@@ -114,7 +114,7 @@ exports.signUP = async (req, res) => {
         // find most recent otp stored for the user
 
         const recentOTP = await OTP.find({email}).sort({createdAt: -1}).limit(1);
-        // console.log("recentOTP", recentOTP);
+        console.log("recentOTP", recentOTP);
 
         // validateOTP
 
