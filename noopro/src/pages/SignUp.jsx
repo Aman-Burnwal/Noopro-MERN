@@ -1,12 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import sundarKanya from "../assets/Images/signup.webp"
 import { SignUpAPI, SendOtpAPI } from "../services/apis"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const SignUp = () => {
 
   const navigate = useNavigate();
   const [otpSuccess, setOtpSuccess] = useState(false);
+
+
+  const token = useSelector((state) => state.auth.token);
+
+
+  useEffect(() => {
+
+    if (token) navigate("/")
+    
+  }, [token]);
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,7 +42,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
 
-    
+
     e.preventDefault()
     // check if password and confirm password match
     if (formData.password !== formData.confirmPassword) {
@@ -49,12 +61,12 @@ const SignUp = () => {
       setFormData({ ...formData, isError: true, errorMessage: "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character" })
       return
     }
-    
+
 
     if (otpSuccess) {
 
       if (formData.otp.length != 6) {
-        setFormData({...formData, isError: true, errorMessage: "OTP should be exactly 6 digits" })
+        setFormData({ ...formData, isError: true, errorMessage: "OTP should be exactly 6 digits" })
         return;
       }
       fetch(SignUpAPI, {
@@ -62,7 +74,7 @@ const SignUp = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData ),
+        body: JSON.stringify(formData),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -80,7 +92,7 @@ const SignUp = () => {
           setFormData({ ...formData, isError: true, errorMessage: "Failed to sign up. Please try again later" })
           return;
         })
-      
+
       return;
     }
 
@@ -96,9 +108,9 @@ const SignUp = () => {
 
         // console.log(data);
         setOtpSuccess(data.success);
-        
+
         if (!data.success) {
-          setFormData({...formData, isError: true, errorMessage: data.message });
+          setFormData({ ...formData, isError: true, errorMessage: data.message });
           return;
         }
         setFormData({ ...formData, isError: "", errorMessage: "" });
@@ -110,21 +122,13 @@ const SignUp = () => {
       })
 
 
-
-    /**
-     *          
-     * 
-
-     */
-
-
   }
 
   return (
     <div className="bg-richblue-800">
       <div className="w-11/12 mx-auto min-h-screen">
-        <div className="flex flex-row gap-10 justify-between items-center py-9">
-          <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-between items-center py-9">
+          <div className="col-span-1 flex flex-col gap-3">
             <h1 className="text-richblack-5 text-3xl">Join the millions learning to code with StudyNotion for free</h1>
             <p className="text-richblack-100 font-semibold text-xl">Build skills for today, tomorrow, and beyond.</p>
             <p className="text-blue-100 font-semibold font-edu-sa italic">Education to future-proof your career.</p>
@@ -147,7 +151,7 @@ const SignUp = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                <div className="flex flex-row gap-3 text-richblack-25">
+                <div className="flex flex-col md:flex-row gap-3 text-richblack-25">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="firstName">First Name</label>
                     <input
@@ -170,8 +174,8 @@ const SignUp = () => {
                   </div>
                 </div>
 
-                <div className=" flex flex-col gap-1">
-                  <label htmlFor="email" className="text-richblack-25 ">Email</label>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="email" className="text-richblack-25">Email</label>
                   <input
                     name="email"
                     className="rounded-lg bg-richblack-900 text-richblack-25 w-fit pl-2 py-3 placeholder:text-richblue-25"
@@ -180,10 +184,9 @@ const SignUp = () => {
                     placeholder="Enter your email"
                     type="email"
                   />
-
                 </div>
 
-                <div className="flex flex-row gap-3 text-richblack-25">
+                <div className="flex flex-col md:flex-row gap-3 text-richblack-25">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="password">Password</label>
                     <input
@@ -208,9 +211,9 @@ const SignUp = () => {
                   </div>
                 </div>
               </div>
-              { otpSuccess && 
-                <div className=" flex flex-col gap-1">
-                  <label htmlFor="email" className="text-richblack-25 ">OTP</label>
+              {otpSuccess &&
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="otp" className="text-richblack-25">OTP</label>
                   <input
                     name="otp"
                     className="rounded-lg bg-richblack-900 text-richblack-25 w-fit pl-2 py-3 placeholder:text-richblue-25"
@@ -219,30 +222,29 @@ const SignUp = () => {
                     placeholder="Enter your OTP"
                     type="text"
                   />
-
                 </div>
               }
 
               {
                 formData.isError && (
-                  <div className="  text-pink-50 text-center">{formData.errorMessage}</div>
+                  <div className="text-pink-50 text-center">{formData.errorMessage}</div>
                 )
               }
 
-              <button className={`group px-6 py-3 w-fit rounded-lg  font-medium text-center
+              <button className={`group px-6 py-3 w-fit rounded-lg font-medium text-center
                 hover:scale-95 transition-all duration-200 drop-shadow-[2px_1.5px_rgba(255,255,255,0.25)]
-                   bg-yellow-50 text-richblack-900 `}>
-                <div className=" leading-6   transition-all duration-200  group-hover:scale-95">
-                  {otpSuccess ? "create Account" : "Send Otp"}
+                   bg-yellow-50 text-richblack-900`}>
+                <div className="leading-6 transition-all duration-200 group-hover:scale-95">
+                  {otpSuccess ? "Create Account" : "Send OTP"}
                 </div>
-
               </button>
-
-
             </form>
+            <Link to={"/login"} >
+              <p className="text-blue-100 text-sm font-semibold">Already have an account? Sign In</p>
+            </Link>
           </div>
           {/* image */}
-          <div>
+          <div className="hidden md:block">
             <img src={sundarKanya} alt="Sign Up" />
           </div>
         </div>
