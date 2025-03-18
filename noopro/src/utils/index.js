@@ -15,10 +15,13 @@ import store from '../../store/store'
 import ProfileDropDown from "../components/core/Auth/ProfileDropDown";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import ResetPassword from "../pages/ResetPassword";
+
 
 export {
     // homepage
     HiglightBtn, Higlighter, Home, Preview, CourseCard, ExploreCourse, TimelineHomeSection, KnowMoreSection, BecomeInstructorSection,
+    ResetPassword,
     HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store,
 
     // 
