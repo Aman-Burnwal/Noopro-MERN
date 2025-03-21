@@ -30,14 +30,17 @@ import ContactForm from "../components/core/common/ContactForm";
 import CountryCode from "../data/countrycode.json";
 
 import Footer from "../pages/common/Footer";
+import FooterLink from "../components/core/Footer/FooterLink";
+import { FooterLink2 } from "../data/footer-links";
 import ContactUs from "../pages/ContactUs";
+
 
 
 export {
     // homepage
     HiglightBtn, Higlighter, Home, Preview, CourseCard, ExploreCourse, TimelineHomeSection, KnowMoreSection, BecomeInstructorSection,
     ResetPassword,
-    HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store,
+    HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store, FooterLink, FooterLink2,
 
     // 
     Navigation, ProfileDropDown, Login, SignUp, ContactForm, Footer,ContactUs,
