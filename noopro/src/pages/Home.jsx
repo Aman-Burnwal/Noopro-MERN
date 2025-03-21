@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
-import { BecomeInstructorSection, ExploreCourse, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
+import { BecomeInstructorSection, ExploreCourse, Footer, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
 
 
 const Home = () => {
@@ -224,6 +224,7 @@ const Home = () => {
             </div>
 
             {/* section 4 */}
+            <Footer />
 
         </div>
     )

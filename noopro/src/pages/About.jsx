@@ -1,5 +1,5 @@
 
-import { AboutHeroImages, AboutUs, ContactForm, Higlighter, LearnGrid, StatsComponenet } from "../utils"
+import { AboutHeroImages, AboutUs, ContactForm, Footer, Higlighter, LearnGrid, StatsComponenet } from "../utils"
 
 
 const About = () => {
@@ -78,11 +78,16 @@ const About = () => {
             {/* section 6 */}
 
             <div className=" w-full py-14">
-                <div className=" w-8/12  py-14 mx-auto  bg-richblack-600">
+                <div className=" w-8/12  py-14 mx-auto  rounded-lg  bg-richblack-600">
                     <p className=" text-3xl font-semibold text-white text-center">Get in Touch</p>
                     <p className=" text-pure-greys-100 text-center pt-4 pb-20">We&lsquo;d love to here for you, Please fill out this form.</p>
                     <ContactForm />
                 </div>
+            </div>
+
+            {/* section 7 */}
+            <div className=" w-full">
+                <Footer />
             </div>
         </div>
     )
