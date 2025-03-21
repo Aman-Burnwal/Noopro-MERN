@@ -33,6 +33,7 @@ import Footer from "../pages/common/Footer";
 import FooterLink from "../components/core/Footer/FooterLink";
 import { FooterLink2 } from "../data/footer-links";
 import ContactUs from "../pages/ContactUs";
+import ContactSupportCard from "../components/core/Contact/ContactSupportCard";
 
 
 
@@ -43,7 +44,7 @@ export {
     HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store, FooterLink, FooterLink2,
 
     // 
-    Navigation, ProfileDropDown, Login, SignUp, ContactForm, Footer,ContactUs,
+    Navigation, ProfileDropDown, Login, SignUp, ContactForm, Footer,ContactUs,ContactSupportCard,
     CountryCode,
 
     // About
