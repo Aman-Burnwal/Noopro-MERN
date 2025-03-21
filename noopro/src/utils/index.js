@@ -1,5 +1,5 @@
 import HiglightBtn from "../components/core/HomePage/HighlightBtn";
-import Higlighter from "../components/core/HomePage/Highlighter";
+import Higlighter from "../components/core/common/Highlighter";
 import Home from "../pages/Home";
 import Preview from "../components/core/HomePage/Preview";
 import CourseCard from "../components/core/HomePage/CourseCard";
@@ -16,6 +16,21 @@ import ProfileDropDown from "../components/core/Auth/ProfileDropDown";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import ResetPassword from "../pages/ResetPassword";
+import About from "../pages/About";
+import AboutHeroImages from "../components/core/About/AboutHeroImages";
+import AboutHeroImg1 from "../assets/Images/About/girl1.png"
+import AboutHeroImg2 from "../assets/Images/About/girl2.png";
+import AboutHeroImg3 from "../assets/Images/About/girl3.png"
+import { AboutUsData, statsData, LearnGridData } from "../data/About";
+import AboutUs from "../components/core/About/AboutUs";
+import StatsComponenet from "../components/core/About/StatsComponenet";
+import LearnGrid from "../components/core/About/LearnGrid";
+import ContactForm from "../components/core/common/ContactForm";
+
+import CountryCode from "../data/countrycode.json";
+
+import Footer from "../pages/common/Footer";
+import ContactUs from "../pages/ContactUs";
 
 
 export {
@@ -25,5 +40,12 @@ export {
     HomePageExplore, HomePageTags, NavbarLinks, logo_nav, store,
 
     // 
-    Navigation, ProfileDropDown, Login, SignUp,
+    Navigation, ProfileDropDown, Login, SignUp, ContactForm, Footer,ContactUs,
+    CountryCode,
+
+    // About
+    About, AboutHeroImages, AboutUs, StatsComponenet, LearnGrid,
+    AboutHeroImg1, AboutHeroImg2, AboutHeroImg3, AboutUsData, statsData, LearnGridData,
+
+
  }
