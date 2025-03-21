@@ -15,7 +15,7 @@ const SignUp = () => {
 
   useEffect(() => {
 
-    if (token) navigate("/")
+    if (token) navigate("/dashboard/user-profile")
     
   }, [token]);
   

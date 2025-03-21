@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { About, ContactUs, Login, Navigation, ResetPassword, SignUp } from "./utils"
+import { About, ContactUs, Login, MyProfile, Navigation, ResetPassword, SignUp } from "./utils"
 
 
 
@@ -18,6 +18,7 @@ const App = () => {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/dashboard/user-profile" element= {<MyProfile />} />
       </Routes>
       
       

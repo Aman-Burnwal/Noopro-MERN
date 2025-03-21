@@ -13,7 +13,7 @@ const Login = () => {
   const distpatch = useDispatch();
 
   useEffect(() => {
-    if(token) navigate("/")
+    if(token) navigate("/dashboard/user-profile")
   }, [token])
 
 

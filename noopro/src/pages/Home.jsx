@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaArrowRightLong } from "react-icons/fa6";
 import BannerVideo from "../assets/Images/banner.mp4";
 import { BecomeInstructorSection, ExploreCourse, Footer, HiglightBtn, Higlighter, KnowMoreSection, Preview, TimelineHomeSection } from "../utils/index"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 const Home = () => {
+    const navigate = useNavigate();
+    const token = useSelector((store) => store.auth.token);
+
+    useEffect(() => {
+        if(token) navigate("/dashboard/user-profile")
+    }, [])
     return (
         <div className="w-full min-h-screen  ">
 
