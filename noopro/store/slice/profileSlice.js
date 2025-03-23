@@ -7,10 +7,20 @@ const profileSlice = createSlice({
         user: null,
     },
     reducers: {
-        setUser : (state, action) => setUser(state.user = action.payload)
+
+        setUser : (state, action) => {
+            console.log("Set user is called")
+            console.log(action.payload);
+            setUser(state.user = action.payload)
+            console.log(state.user);
+        },
+        removeUser: (state) => {
+            console.log("remove user Called ")
+            setUser(state.user = null)
+        },
     }
 })
 
 
-export const {setUser} = profileSlice.actions
+export const {setUser, removeUser} = profileSlice.actions
 export default profileSlice.reducer;
