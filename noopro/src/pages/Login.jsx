@@ -4,6 +4,7 @@ import {  LoginAPI } from "../services/apis"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { add } from "../../store/slice/authSlice"
+import { setUser } from "../../store/slice/profileSlice"
 
 const Login = () => {
 
@@ -67,9 +68,12 @@ const Login = () => {
           setFormData({ ...formData, isError: true, errorMessage: data.message });
           return;
         }
-      
-        distpatch(add(data.token));
-        localStorage.setItem("token", data.token);
+
+     
+        distpatch( setUser(data.user) );
+        distpatch( add(data.token) );
+        
+        
         setFormData({ ...formData, isError: "", errorMessage: "" });
       })
       .catch((error) => {
