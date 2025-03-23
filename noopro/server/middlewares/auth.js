@@ -5,7 +5,7 @@ require("dotenv").config();
 exports.auth = async(req, res, next) => {
     try {
         // extract token
-        const token = req.cookies.token || req.body.token || req.header("Authorisation").replace("Beared", "");
+        const token = req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer", "");
 
         if(!token) return res.status(401).json({
             success: false,
@@ -29,6 +29,7 @@ exports.auth = async(req, res, next) => {
         console.error("error in authentication", error)
         return res.status(401).json({
             success: false,
+            
             message: "pata nhi kaha error aa gaya authentication me"
         })
     }
