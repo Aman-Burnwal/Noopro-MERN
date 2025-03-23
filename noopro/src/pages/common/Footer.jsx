@@ -70,7 +70,7 @@ const Footer = () => {
             {
               FooterLink2.map((data) => {
                 return (
-                  <div className=" col-span-1 flex flex-col gap-2" key={data}>
+                  <div className=" col-span-1 flex flex-col gap-2" key={data.title}>
                     <h2 className="text-pure-greys-5 py-4 font-inter font-medium">{data.title}</h2>
 
                     {
