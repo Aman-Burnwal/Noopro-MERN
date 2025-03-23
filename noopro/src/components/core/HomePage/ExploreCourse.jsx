@@ -9,7 +9,7 @@ const ExploreCourse = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [activeCard, setActiveCard] = useState(0);
     const [cardData, setCardData] = useState(HomePageExplore[0].courses);
-    console.log(cardData);
+    // console.log(cardData);
 
     const updateData = (ind, tag) => {
         setActiveTab(() => ind);
