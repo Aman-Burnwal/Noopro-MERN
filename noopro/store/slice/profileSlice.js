@@ -9,13 +9,12 @@ const profileSlice = createSlice({
     reducers: {
 
         setUser : (state, action) => {
-            console.log("Set user is called")
-            console.log(action.payload);
+           
             setUser(state.user = action.payload)
-            console.log(state.user);
+          
         },
         removeUser: (state) => {
-            console.log("remove user Called ")
+        
             setUser(state.user = null)
         },
     }
