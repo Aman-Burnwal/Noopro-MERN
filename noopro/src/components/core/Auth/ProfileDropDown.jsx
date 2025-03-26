@@ -1,10 +1,10 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import { removeToken } from "../../../../store/slice/authSlice";
-import { removeUser, setUser } from "../../../../store/slice/profileSlice";
+import {  setUser } from "../../../../store/slice/profileSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GetUserDetails } from "../../../services/apis";
+import { LogoutUserFunction } from "./LoginSignUpFormValidation";
 
 
 const ProfileDropDown = () => {
@@ -30,11 +30,18 @@ const ProfileDropDown = () => {
         },
       
       })
-        .then(response => response.json() )
+        .then(response => {
+          if(response.status === 401) {
+            LogoutUserFunction("/login",distpatch, navigate)
+          }
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        } )
         .then(data => {
           distpatch(setUser(data.userDetails))
-          // console.log("Success:", data)
-          console.log(data.userDetails.iamge);
+          console.log("user ko fetch kiya", data.userDetails);
         })
         .catch(error => console.error("Fetch error :", error));
 
@@ -42,22 +49,21 @@ const ProfileDropDown = () => {
 
   }, [token])
 
- 
 
-  const LogoutHandle = () => {
-    distpatch(removeToken());
-    distpatch(removeUser());
 
-  }
+  if(!user) return <div>Loding</div> 
 
   return (
-    <div className=" relative">
-      {/* <FaUser className="relative" /> */}
-      <img src={user?.iamge} alt="profile" className="w-10 h-10 rounded-full" />
-      <div className="">
-        <p className=" w-fit px-3 py-2 text-pure-greys-5">{user.firstName}</p>
-        <button onClick={() => LogoutHandle()} >  Logout</button>
-      </div>
+    <div className=" relative"  >
+
+      <img
+         
+       src={user?.iamge} 
+       alt="profile" 
+       className="w-10 h-10 rounded-full" 
+
+       />
+      
     </div>
   )
 }
