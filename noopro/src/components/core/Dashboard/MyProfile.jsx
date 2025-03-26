@@ -19,8 +19,9 @@ const MyProfile = () => {
   },[token])
 
   return (
-    <div>
-      
+    <div className=" text-yellow-300 bg-black">
+    skdjsl
+      My profile
     </div>
   )
 }
