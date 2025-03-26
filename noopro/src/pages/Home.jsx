@@ -11,7 +11,7 @@ const Home = () => {
     const token = useSelector((store) => store.auth.token);
 
     useEffect(() => {
-        if(token) navigate("/dashboard/user-profile")
+        if(token) navigate("/dashboard/my-profile")
     }, [])
     return (
         <div className="w-full min-h-screen  ">
