@@ -36,6 +36,12 @@ import ContactUs from "../pages/ContactUs";
 import ContactSupportCard from "../components/core/Contact/ContactSupportCard";
 import Dashboard from "../pages/Dashboard";
 import MyProfile from "../components/core/Dashboard/MyProfile";
+import Sidebar from "../components/core/Dashboard/Sidebar";
+import SideBarLink from "../components/core/Dashboard/SideBarLink";
+import Error from "../pages/common/Error";
+import Icon from "../components/core/Dashboard/Icon";
+import ProtectedRoute from "../components/core/common/ProtectedRoute";
+
 
 
 
@@ -48,7 +54,7 @@ export {
     // 
     Navigation, ProfileDropDown, Login, SignUp, ContactForm, Footer,ContactUs,ContactSupportCard,
     CountryCode,
-    Dashboard, MyProfile,
+    Dashboard, MyProfile,Error, Sidebar, SideBarLink, Icon, ProtectedRoute,
 
     // About
     About, AboutHeroImages, AboutUs, StatsComponenet, LearnGrid,
