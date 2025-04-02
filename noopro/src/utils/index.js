@@ -40,6 +40,7 @@ import Sidebar from "../components/core/Dashboard/Sidebar";
 import SideBarLink from "../components/core/Dashboard/SideBarLink";
 import Error from "../pages/common/Error";
 import Icon from "../components/core/Dashboard/Icon";
+import PasswordComponent from "../components/core/common/PasswordComponent";
 import ProtectedRoute from "../components/core/common/ProtectedRoute";
 
 
@@ -59,6 +60,8 @@ export {
     // About
     About, AboutHeroImages, AboutUs, StatsComponenet, LearnGrid,
     AboutHeroImg1, AboutHeroImg2, AboutHeroImg3, AboutUsData, statsData, LearnGridData,
+
+    PasswordComponent, 
 
 
  }
