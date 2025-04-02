@@ -3,7 +3,7 @@ import sundarKanya from "../assets/Images/signup.webp"
 import {  LoginAPI } from "../services/apis"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { add } from "../../store/slice/authSlice"
+import { addToken } from "../../store/slice/authSlice"
 import { setUser } from "../../store/slice/profileSlice"
 
 const Login = () => {
@@ -71,7 +71,7 @@ const Login = () => {
 
      
         distpatch( setUser(data.user) );
-        distpatch( add(data.token) );
+        distpatch( addToken(data.token) );
         
         
         setFormData({ ...formData, isError: "", errorMessage: "" });
@@ -131,7 +131,7 @@ const Login = () => {
                     <label htmlFor="password">Password</label>
                     <input
                       name="password"
-                      className="rounded-lg bg-richblack-900 pl-2 py-3 placeholder:text-richblue-25"
+                      className="rounded-lg w-fit bg-richblack-900 pl-2 py-3 placeholder:text-richblue-25"
                       value={formData.password}
                       onChange={handleChange}
                       placeholder="Enter your password"
