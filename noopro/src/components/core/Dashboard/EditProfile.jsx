@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import PasswordComponent from "../common/PasswordComponent";
-import { useState } from "react";
-import {  updateProfilePictue } from "../../../utils";
+
+import { updateProfilePictue } from "../../../utils";
 import { useNavigate } from "react-router-dom";
 
 
@@ -18,16 +18,16 @@ const EditProfile = () => {
   // console.log(user);
 
   return (
-    <div className=" top-0 left-0 absolute  w-full  z-20   ">
+    <div className="   w-full  z-20   ">
       <div className=" mb-5 px-6 py-8  flex flex-row  gap-5 items-center  rounded-md bg-richblack-600  ">
-        <img className=" relative rounded-full shadow h-16  object-cover  w-16 " src={   user.iamge} alt="profile-pic" />
+        <img className=" relative rounded-full shadow h-16  object-cover  w-16 " src={user.iamge} alt="profile-pic" />
 
         <div className=" flex flex-col gap-6">
 
           <h1>Change your profile Photo</h1>
 
           <div
-            
+
             className=" flex flex-row gap-5">
 
             <label
@@ -38,9 +38,9 @@ const EditProfile = () => {
               Upload
             </label>
             <input
-            
-              onChange={(e) =>  updateProfilePictue(token, (e.target.files[0]), navigate, dispatch, "/") }
-              
+
+              onChange={(e) => updateProfilePictue(token, (e.target.files[0]), navigate, dispatch, "/")}
+
               className=" w-full text-sm  hidden text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"
 
             />
@@ -102,7 +102,7 @@ const EditProfile = () => {
             </div>
             <div className=" flex flex-row gap-4">
               <div className=" flex flex-row text-black gap-1">
-                
+
                 <input type="radio" id="html1" name="fav_language" value="HTML" />
                 <label htmlFor="css">CSS</label>
 
@@ -122,20 +122,20 @@ const EditProfile = () => {
 
             </div>
 
-            
+
 
           </div>
 
-           <div className="" >
-           <h1>Password</h1>
-           <PasswordComponent text={"Current Password"} />
-          <div className=" relative flex flex-row  justify-between">
+          <div className="" >
+            <h1>Password</h1>
+            <PasswordComponent text={"Current Password"} />
+            <div className=" relative flex flex-row  justify-between">
 
-            
-          <PasswordComponent  text={"Change Password"}/>
-          <PasswordComponent  text={"Change Password"}/>
 
-          </div>
+              <PasswordComponent text={"Change Password"} />
+              <PasswordComponent text={"Change Password"} />
+
+            </div>
           </div>
 
 
