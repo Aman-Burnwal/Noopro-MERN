@@ -12,11 +12,11 @@ const Dashboard = () => {
   return (
 
     <div className=" min-h-screen bg-richblack-800 w-full">
-      <div className=' flex flex-col gap-6 w-fit'>
-          <div className=' '>
+      <div className=' grid  grid-cols-5 gap-6 w-full justify-between'>
+          <div className= "  col-span-1">
             <Sidebar/>
           </div>
-          <div className=' '>
+          <div className=' col-span-4  '>
             <Outlet />
           </div>
       </div>
