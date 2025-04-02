@@ -42,6 +42,10 @@ import Error from "../pages/common/Error";
 import Icon from "../components/core/Dashboard/Icon";
 import PasswordComponent from "../components/core/common/PasswordComponent";
 import ProtectedRoute from "../components/core/common/ProtectedRoute";
+import IconBtn from "../components/core/common/IconBtn";
+import EditProfile from "../components/core/Dashboard/EditProfile";
+import {updateProfilePictue} from "../hook/profile"
+import { ProfilePictureAPI } from "../services/apis";
 
 
 
@@ -61,7 +65,7 @@ export {
     About, AboutHeroImages, AboutUs, StatsComponenet, LearnGrid,
     AboutHeroImg1, AboutHeroImg2, AboutHeroImg3, AboutUsData, statsData, LearnGridData,
 
-    PasswordComponent, 
+    PasswordComponent, IconBtn, EditProfile, updateProfilePictue, ProfilePictureAPI,
 
 
  }
