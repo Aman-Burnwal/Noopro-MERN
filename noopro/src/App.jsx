@@ -21,6 +21,7 @@ const App = () => {
         <Route element={<ProtectedRoute />}> 
           <Route  element={<Dashboard />}>
             <Route path="/dashboard/my-profile" element={<MyProfile />} />
+            
           </Route>
         </Route>
         
