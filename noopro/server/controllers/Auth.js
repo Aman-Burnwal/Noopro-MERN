@@ -59,7 +59,7 @@ exports.sendOTP = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "OTP to bina dikkat ke chala gaya dadu",
-            // otp,
+            otp,
         })
 
 
