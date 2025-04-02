@@ -4,12 +4,12 @@ const profileSlice = createSlice({
     name: "profile",
 
     initialState: {
-        user: null,
+        user: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
     },
     reducers: {
 
         setUser : (state, action) => {
-           
+            localStorage.setItem("token", JSON.stringify(action.payload));
             setUser(state.user = action.payload)
           
         },
