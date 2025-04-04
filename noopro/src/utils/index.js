@@ -46,6 +46,7 @@ import IconBtn from "../components/core/common/IconBtn";
 import EditProfile from "../components/core/Dashboard/EditProfile";
 import {updateProfilePictue} from "../hook/profile"
 import { ProfilePictureAPI } from "../services/apis";
+import Settings from "../components/core/Dashboard/setting";
 
 
 
@@ -66,6 +67,7 @@ export {
     AboutHeroImg1, AboutHeroImg2, AboutHeroImg3, AboutUsData, statsData, LearnGridData,
 
     PasswordComponent, IconBtn, EditProfile, updateProfilePictue, ProfilePictureAPI,
+    Settings,
 
 
  }
