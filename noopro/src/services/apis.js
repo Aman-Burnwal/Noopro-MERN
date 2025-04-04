@@ -8,3 +8,4 @@ export const LoginAPI = import.meta.env.VITE_BASE_URL + "/auth/login";
 export const GetUserDetails = import.meta.env.VITE_BASE_URL + "/profile/getUserDetails"
 export const ResetPasswordTokenAPI = import.meta.env.VITE_BASE_URL + "/auth/reset-password-token";
 export const ProfilePictureAPI =import.meta.env.VITE_BASE_URL + "/profile/updateDisplayPicture"
+export const ChangePasswordAPI = import.meta.env.VITE_BASE_URL + "/auth/changepassword";
