@@ -249,7 +249,7 @@ exports.ChangePassword = async(req, res) => {
 
         const isPasswordMatch = await bcrypt.compare(oldPassword, userDetails.password);
 
-        if(!isPasswordMatch) return res.staus(401).json({
+        if(!isPasswordMatch) return res.status(401).json({
             success: false,
             message: "old Password did not match"
         })
