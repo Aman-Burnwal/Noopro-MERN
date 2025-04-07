@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { updateProfilePictue } from "../../../../utils";
 
 
@@ -9,7 +8,7 @@ const ChangeProfilePicture = () => {
         const user = useSelector((store) => store.profile.user);
 
         const token = useSelector((store) => store.auth.token);
-        const navigate = useNavigate();
+     
         const dispatch = useDispatch();
         return (
                 <div>
@@ -33,7 +32,7 @@ const ChangeProfilePicture = () => {
                                                 </label>
                                                 <input
 
-                                                        onChange={(e) => updateProfilePictue(token, (e.target.files[0]), navigate, dispatch, "/")}
+                                                        onChange={(e) => updateProfilePictue(token, (e.target.files[0]), dispatch)}
 
                                                         className="   hidden " id="file_input" type="file"
 
