@@ -58,12 +58,12 @@ const MyProfile = () => {
           </IconBtn>
           </div>
           <p
-            className={`${user?.additionalDetails?.about
+            className={`${user?.additonDetail?.about
               ? "text-richblack-5"
               : "text-richblack-400"
               } text-sm font-medium`}
           >
-            {user?.additionalDetails?.about ?? "Write Something About Yourself"}
+            {user?.additonDetail?.about ?? "Write Something About Yourself"}
           </p>
         </div>
         <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px]  border-richblack-300 bg-richblack-700 p-8 px-12">
@@ -97,7 +97,7 @@ const MyProfile = () => {
               <div>
                 <p className="mb-2 text-sm text-richblack-600">Gender</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.additionalDetails?.gender ?? "Add Gender"}
+                  {user?.additonDetail?.gender ?? "Add Gender"}
                 </p>
               </div>
             </div>
@@ -111,13 +111,13 @@ const MyProfile = () => {
               <div>
                 <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
+                  {user?.additonDetail?.contactNumber ?? "Add Contact Number"}
                 </p>
               </div>
               <div>
                 <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {(user?.additionalDetails?.dateOfBirth) ??
+                  {(user?.additonDetail?.dateOfBirth) ??
                     "Add Date Of Birth"}
                 </p>
               </div>
