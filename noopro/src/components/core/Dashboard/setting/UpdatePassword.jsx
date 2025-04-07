@@ -2,11 +2,14 @@ import { useState } from "react"
 import PasswordComponent from "../../common/PasswordComponent"
 import { passwodChanger } from "../../../../hook/auth/login";
 import { useDispatch, useSelector } from "react-redux";
+import IconBtn from "../../common/IconBtn";
+import { useNavigate } from "react-router-dom";
 
 
 const UpdatePassword = () => {
 
         const dispatch = useDispatch();
+        const navigate = useNavigate();
         const token = useSelector((store) => store.auth.token);
         const [password, setPassword] = useState("");
         const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,7 +18,7 @@ const UpdatePassword = () => {
                 message: null,
         })
         return (
-                <div className=" px-6 py-4 text-richblack-50 border-[0.2px] border-richblack-100 bg-richblack-600 rounded-md" >
+                <div className=" mt-6 px-6 py-4 text-richblack-50 border-[0.2px] border-richblack-100 bg-richblack-600 rounded-md" >
                         <h1 className=" text-3xl font-edu-sa">Password</h1>
                         
                         <form  onSubmit={(e) =>  passwodChanger(e, password, confirmPassword, 
@@ -41,8 +44,18 @@ const UpdatePassword = () => {
                                 />
                                 </div>
                                 {eroor.error && <p>{eroor.message}</p>}
-                                <button className=" border-2 border-blue-5 mt-3 px-6 py-1 rounded-md bg-richblack-100
-                                 text-richblue-500 font-inter "   type="Submit">Submit</button>
+                                        <div className="flex justify-end gap-2 my-2">
+                                          <button
+                                            onClick={() => {
+                                              navigate("/dashboard/my-profile")
+                                            }}
+                                            className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+                                          >
+                                            Cancel
+                                          </button>
+                                          <IconBtn type="submit" text="Save" />
+                                        
+                                        </div>
                         
                               
 
