@@ -7,12 +7,12 @@ exports.updateProfile = async (req, res) => {
 
     try {
         // get data
-        const {dateOfBirth = "", about ="", contactNumber, gender} = req.body;
+        const {dateOfBirth = "", about ="", contactNumber, gender , firstName, lastName} = req.body;
         // get userId
         const id = req.user.id;
         // validation
 
-        if(!contactNumber || !gender) return res.status(400).json({
+        if(!contactNumber || !gender || !firstName || !lastName) return res.status(400).json({
             success: false,
             message: "Please fill required fields"
         })
@@ -25,15 +25,20 @@ exports.updateProfile = async (req, res) => {
         profileDetails.about = about;
         profileDetails.gender = gender;
         profileDetails.contactNumber = contactNumber;
-
+        userDetails.firstName = firstName,
+        userDetails.lastName = lastName
+        
         await profileDetails.save();
+        await userDetails.save();
+
+        const updatedUserDetails = await User.findById(id).populate("additonDetail").exec();
         
         // return response
 
         return res.status(200).json({
             success: true,
             message: "Profile updated successfully",
-            profileDetails,
+            updatedUserDetails,
         })
     } catch (error) {
         console.error("error in updating profile", error);
