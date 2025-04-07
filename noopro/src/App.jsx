@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { About, ContactUs, Dashboard, EditProfile, Error, Login, MyProfile, Navigation, ProtectedRoute, ResetPassword, SignUp } from "./utils"
+import { About, ContactUs, Dashboard, EditProfile, Error, Login, MyProfile, Navigation, ProtectedRoute, ResetPassword, Settings, SignUp } from "./utils"
 
 
 
@@ -22,7 +22,7 @@ const App = () => {
         <Route element={<ProtectedRoute />}> 
           <Route  element={<Dashboard />}>
             <Route path="/dashboard/my-profile" element={<MyProfile />} />
-            <Route path="/dashboard/settings" element ={<EditProfile />} />
+            <Route path="/dashboard/settings" element ={<Settings />} />
 
           </Route>
         </Route>
