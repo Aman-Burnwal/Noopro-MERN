@@ -12,54 +12,12 @@ const EditProfile = () => {
 
   const user = useSelector((store) => store.profile.user);
 
-  const token = useSelector((store) => store.auth.token);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   // console.log(user);
 
   return (
-    <div className="   w-full  z-20   ">
-      <div className=" mb-5 px-6 py-8  flex flex-row  gap-5 items-center  rounded-md bg-richblack-600  ">
-        <img className=" relative rounded-full shadow h-16  object-cover  w-16 " src={user.iamge} alt="profile-pic" />
-
-        <div className=" flex flex-col gap-6">
-
-          <h1>Change your profile Photo</h1>
-
-          <div
-
-            className=" flex flex-row gap-5">
-
-            <label
-              htmlFor="file_input"
-              className="group px-5 py-2   rounded-md cursor-pointer  font-medium text-center 
-                      bg-yellow-50 text-richblack-900"
-            >
-              Upload
-            </label>
-            <input
-
-              onChange={(e) => updateProfilePictue(token, (e.target.files[0]), navigate, dispatch, "/")}
-
-              className=" w-full text-sm  hidden text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"
-
-            />
-
-            <button
-              onClick={() => console.log("You want to remove your profile pic")}
-
-              className="group px-5 py-2  rounded-md  font-medium text-center 
-                      bg-richblack-50 text-richblack-900"
-            > Remove
-
-            </button>
-
-          </div>
-
-
-
-        </div>
-      </div>
+    <div className=" w-full">
+    <div className="  w-9/12 mx-auto pt-14 ">
+     
 
       <div className="  px-6 py-8  flex flex-col  gap-5   rounded-md bg-richblack-600  ">
 
@@ -146,6 +104,7 @@ const EditProfile = () => {
 
       </div>
 
+    </div>
     </div>
   )
 }
