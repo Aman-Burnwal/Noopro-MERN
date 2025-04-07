@@ -22,7 +22,7 @@ const Sidebar = () => {
         })
       }
       <div className=" border-t border-s-blue-50 mt-5 pt-5 flex flex-col gap-2 shadow-xl">
-      <SideBarLink  data={{name: "setting", path: "/setting", icon : "VscSettingsGear"}}/>
+      <SideBarLink  data={{name: "setting", path: "/dashboard/settings", icon : "VscSettingsGear"}}/>
      
       <button className=" px-5 flex flex-row gap-5 items-center"
        onClick={() => (LogoutUserFunction("/" , dispatch, naviagate))}>
