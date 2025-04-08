@@ -11,3 +11,4 @@ export const ProfilePictureAPI =import.meta.env.VITE_BASE_URL + "/profile/update
 export const ChangePasswordAPI = import.meta.env.VITE_BASE_URL + "/auth/changepassword";
 export const UPDATE_PROFILE_API = import.meta.env.VITE_BASE_URL + "/profile/updateProfile"
 export const DELETE_PROFILE_API = import.meta.env.VITE_BASE_URL + "/profile/deleteProfile"
+export const GET_ENROLL_COURSE_API = import.meta.env.VITE_BASE_URL + "profile/getEnrolledCourses"
