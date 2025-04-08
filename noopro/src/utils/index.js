@@ -47,6 +47,10 @@ import EditProfile from "../components/core/Dashboard/EditProfile";
 import {updateProfilePictue} from "../hook/profile"
 import { ProfilePictureAPI } from "../services/apis";
 import Settings from "../components/core/Dashboard/setting";
+import EnrolledCourses from "../components/core/Dashboard/EnrolledCourses";
+import { getUserEnrolledCourses } from "../hook/profile";
+import Cart from "../components/core/Dashboard/Cart/index";
+
 
 
 
@@ -66,8 +70,8 @@ export {
     About, AboutHeroImages, AboutUs, StatsComponenet, LearnGrid,
     AboutHeroImg1, AboutHeroImg2, AboutHeroImg3, AboutUsData, statsData, LearnGridData,
 
-    PasswordComponent, IconBtn, EditProfile, updateProfilePictue, ProfilePictureAPI,
-    Settings,
+    PasswordComponent, IconBtn, EditProfile, updateProfilePictue, ProfilePictureAPI, 
+    Settings, EnrolledCourses, getUserEnrolledCourses, Cart,
 
 
  }
