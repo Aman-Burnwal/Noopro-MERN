@@ -1,3 +1,6 @@
+const CourseProgress = require( "../model/CourseProgress");
+const { convertSecondsToDuration } = require("../utils/sectoDuration");
+const Course = require("../model/Course");
 const Profile = require("../model/Profile");
 const User = require("../model/User");
 const {uploadImageToCloudinay} = require ("../utils/imageUploader");
@@ -212,14 +215,14 @@ exports.updateDisplayPicture = async (req, res) => {
       const courseDetails = await Course.find({ instructor: req.user.id })
   
       const courseData = courseDetails.map((course) => {
-        const totalStudentsEnrolled = course.studentsEnroled.length
+        const totalStudentsEnrolled = course.studentEnrolled.length
         const totalAmountGenerated = totalStudentsEnrolled * course.price
   
         // Create a new object with the additional fields
         const courseDataWithStats = {
           _id: course._id,
           courseName: course.courseName,
-          courseDescription: course.courseDescription,
+          courseDescription: course.coureDiscription,
           // Include other course properties as needed
           totalStudentsEnrolled,
           totalAmountGenerated,
