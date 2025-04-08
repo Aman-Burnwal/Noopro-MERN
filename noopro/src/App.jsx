@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { About, Cart, ContactUs, Dashboard, EnrolledCourses, Error, Login, MyProfile, Navigation, ProtectedRoute, ResetPassword, Settings, SignUp } from "./utils"
+import { About, AddCourse, Cart, ContactUs, Dashboard, EnrolledCourses, Error, Login, MyProfile, Navigation, ProtectedRoute, ResetPassword, Settings, SignUp } from "./utils"
 import { useSelector } from "react-redux"
 import { ACCOUNT_TYPE } from "./utils/constants"
 
@@ -38,11 +38,14 @@ const App = () => {
             }
 
             {
-              user.ACCOUNT_TYPE == ACCOUNT_TYPE.INSTRUCTOR && (
-                <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+              user?.accountType == ACCOUNT_TYPE.INSTRUCTOR && (
+                <>
+                  <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+                  <Route path="/dashboard/add-course" element={<AddCourse />} />
+                </>
               )
             }
-            
+
 
           </Route>
         </Route>
