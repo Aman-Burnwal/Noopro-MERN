@@ -143,3 +143,11 @@ export function deleteProfile(token) {
    
   }
 }
+
+export const getUserEnrolledCourses = async (token) => {
+
+  // console.log(token)
+
+  return [];
+
+}
