@@ -5,13 +5,15 @@ import StepRender from "./StepRender";
 const AddCourse = () => {
   return (
     <div className=" w-full min-h-screen">
-       <div className=" grid grid-col-6 gap-5" >
-          <div>
+       <div className=" pt-6">
+       <div className=" flex flex-row justify-between gap-10 px-7" >
+          <div className=" w-full">
                 <StepRender />
           </div>
-          <div>
+          <div className="">
                 <TipsForAddingCourse />
           </div>
+       </div>
        </div>
     </div>
   )
