@@ -32,7 +32,7 @@ const ChangeProfilePicture = () => {
                                                 </label>
                                                 <input
 
-                                                        onChange={(e) => updateProfilePictue(token, (e.target.files[0]), dispatch)}
+                                                        onChange={(e) => updateProfilePictue(token, (e.target.files[0]), dispatch, user)  }
 
                                                         className="   hidden " id="file_input" type="file"
 
