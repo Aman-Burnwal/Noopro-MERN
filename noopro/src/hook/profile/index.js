@@ -52,9 +52,16 @@ export function updateProfile(token, formData) {
 }
 
 
+// export function deleteProfilePicture(token) {
+
+//   const formData = new FormData();
+
+//   formData.append("displayPicture", null);
+
+// }
 
 
-export const updateProfilePictue = async (token, data, dispatch) => {
+export const updateProfilePictue = async (token, data, dispatch , user) => {
 
   const formData = new FormData();
   formData.append("displayPicture", data);
@@ -64,7 +71,7 @@ export const updateProfilePictue = async (token, data, dispatch) => {
   await fetch(ProfilePictureAPI, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
       Authorization: `Bearer${token}`
     },
     // body: formData,  error in uploading image
@@ -85,7 +92,8 @@ export const updateProfilePictue = async (token, data, dispatch) => {
     })
     .then((res) => {
       console.log("Response from server", res)
-      if (res?.status === 200) {
+      if (res.success) {
+        dispatch(setUser({...user, iamge: res.data.iamge}));
         console.log("Profile picture updated successfully")
         toast.success("Profile Picture Updated Successfully")
         return;
