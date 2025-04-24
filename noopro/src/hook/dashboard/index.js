@@ -4,11 +4,10 @@ import { removeToken } from "../../../store/slice/authSlice"
 import { removeUser } from "../../../store/slice/profileSlice"
 
 export const addCourseDetails = async (data, token, dispatch) => {
+        
+        const result = [];
 
-        console.log(data.get("courseName"))
-       console.log(data, data.get("coureDiscription"))
-
-        fetch(CREATE_COURSE_API, {
+        await fetch(CREATE_COURSE_API, {
                 method: "POST",
                 headers: {
                 //      "Content-Type": "multipart/form-data",
@@ -34,9 +33,14 @@ export const addCourseDetails = async (data, token, dispatch) => {
 
                 return res.json()
         })
-                .then(res => console.log(res))
+                .then(res => {
+                        if(res && res.success ) {
+                          result.push(res?.data)
+                        }
+                })
                 .catch(error => console.log("The error is here ", error));
-
+        console.log(result);
+        return result;
 }
 
 
