@@ -46,7 +46,7 @@ export default function CourseInformationForm() {
     }
     // if form is in edit mode
     if (editCourse) {
-      console.log("data populated", editCourse)
+      console.log("data populated", editCourse , course)
       setValue("courseTitle", course.courseName)
       setValue("courseShortDesc", course.courseDescription)
       setValue("coursePrice", course.price)
@@ -54,7 +54,7 @@ export default function CourseInformationForm() {
       setValue("courseBenefits", course.whatYouWillLearn)
       setValue("courseCategory", course.category)
       setValue("courseRequirements", course.instructions)
-      setValue("thumbnailImage", course.thumbnailImage)
+      setValue("thumbnailImage", course.thumbnail)
     }
     getCategories()
 
@@ -73,7 +73,7 @@ export default function CourseInformationForm() {
       currentValues.courseCategory._id !== course.category._id ||
       currentValues.courseRequirements.toString() !==
         course.instructions.toString() ||
-      currentValues.thumbnailImage !== course.thumbnailImage
+      currentValues.thumbnailImage !== course.thumbnail
     ) {
       return true
     }
@@ -95,33 +95,33 @@ export default function CourseInformationForm() {
         // console.log(data)
         formData.append("courseId", course._id)
         if (currentValues.courseTitle !== course.courseName) {
-          formData.append("courseName", data.courseTitle)
+          formData.append("courseName", data.courseName)
         }
-        if (currentValues.courseShortDesc !== course.courseDescription) {
-          formData.append("courseDescription", data.courseShortDesc)
+        if (currentValues.courseDescription !== course.courseDescription) {
+          formData.append("courseDescription", data.courseDescription)
         }
-        if (currentValues.coursePrice !== course.price) {
-          formData.append("price", data.coursePrice)
+        if (currentValues.price !== course.price) {
+          formData.append("price", data.price)
         }
         if (currentValues.courseTags.toString() !== course.tag.toString()) {
-          formData.append("tag", JSON.stringify(data.courseTags))
+          formData.append("tag", JSON.stringify(data.tag))
         }
-        if (currentValues.courseBenefits !== course.whatYouWillLearn) {
-          formData.append("whatYouWillLearn", data.courseBenefits)
+        if (currentValues.whatYouWillLearn !== course.whatYouWillLearn) {
+          formData.append("whatYouWillLearn", data.whatYouWillLearn)
         }
-        if (currentValues.courseCategory._id !== course.category._id) {
-          formData.append("category", data.courseCategory)
+        if (currentValues.category._id !== course.category._id) {
+          formData.append("category", data.category)
         }
         if (
-          currentValues.courseRequirements.toString() !==
+          currentValues.instructions.toString() !==
           course.instructions.toString()
         ) {
           formData.append(
             "instructions",
-            JSON.stringify(data.courseRequirements)
+            JSON.stringify(data.instructions)
           )
         }
-        if (currentValues.courseImage !== course.thumbnailImage) {
+        if (currentValues.thumbnailImage !== course.thumbnailImage) {
           formData.append("thumbnailImage", data.thumbnailImage)
         }
         console.log("Edit Form data: ", formData)
@@ -154,7 +154,9 @@ export default function CourseInformationForm() {
     setLoading(true)
    
     const result = await addCourseDetails(newFromdata, token, dispatch)
-    if (result) {
+    if (result && result.length) {
+      console.log("course added successfully");
+      console.log(result)
       dispatch(setStep(2))
       dispatch(setCourse(result))
     }
@@ -271,7 +273,7 @@ export default function CourseInformationForm() {
         register={register}
         setValue={setValue}
         errors={errors}
-        editData={editCourse ? course?.thumbnailImage : null}
+        editData={editCourse ? course?.thumbnail : null}
       />
       {/* Benefits of the course */}
       <div className="flex flex-col space-y-2">
@@ -292,7 +294,7 @@ export default function CourseInformationForm() {
       </div>
       {/* Requirements/Instructions */}
       <RequirementsField
-        name="courseRequirements"
+        name="instructions"
         label="Requirements/Instructions"
         register={register}
         setValue={setValue}
