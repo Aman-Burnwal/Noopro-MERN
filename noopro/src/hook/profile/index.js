@@ -2,7 +2,7 @@ import toast from "react-hot-toast"
 import { removeToken } from "../../../store/slice/authSlice"
 import { removeUser, setUser } from "../../../store/slice/profileSlice"
 import { ProfilePictureAPI } from "../../utils"
-import { DELETE_PROFILE_API, UPDATE_PROFILE_API } from "../../services/apis"
+import { CREATE_SECTION_API, DELETE_PROFILE_API, UPDATE_PROFILE_API } from "../../services/apis"
 
 
 export function updateProfile(token, formData) {
@@ -61,7 +61,7 @@ export function updateProfile(token, formData) {
 // }
 
 
-export const updateProfilePictue = async (token, data, dispatch , user) => {
+export const updateProfilePictue = async (token, data, dispatch, user) => {
 
   const formData = new FormData();
   formData.append("displayPicture", data);
@@ -93,7 +93,7 @@ export const updateProfilePictue = async (token, data, dispatch , user) => {
     .then((res) => {
       console.log("Response from server", res)
       if (res.success) {
-        dispatch(setUser({...user, iamge: res.data.iamge}));
+        dispatch(setUser({ ...user, iamge: res.data.iamge }));
         console.log("Profile picture updated successfully")
         toast.success("Profile Picture Updated Successfully")
         return;
@@ -113,7 +113,7 @@ export const updateProfilePictue = async (token, data, dispatch , user) => {
 
 export function deleteProfile(token) {
   return async (dispatch) => {
-    
+
     fetch(DELETE_PROFILE_API, {
       method: "DELETE",
       headers: {
@@ -121,7 +121,7 @@ export function deleteProfile(token) {
         Authorization: `Bearer${token}`
       },
       body: JSON.stringify()
-   
+
 
     })
       .then((res) => {
@@ -136,19 +136,19 @@ export function deleteProfile(token) {
       })
       .then((res) => {
         console.log(res);
-        if(res.success) {
+        if (res.success) {
           dispatch(removeUser())
           dispatch(removeToken())
           toast.success("Account deleted successfully")
         }
-        
-      } )
+
+      })
       .catch((error) => {
         console.log("Error in deleting account", error);
         toast.error("Error in deleting account");
       })
       .finally(console.log("UPDATE_PROFILE_API API completed............"))
-   
+
   }
 }
 
@@ -158,4 +158,159 @@ export const getUserEnrolledCourses = async (token) => {
 
   return [];
 
+}
+
+
+export const createSubSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", CREATE_SUBSECTION_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("CREATE SUB-SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Add Lecture")
+    }
+    toast.success("Lecture Added")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("CREATE SUB-SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+// update a subsection
+export const updateSubSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", UPDATE_SUBSECTION_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("UPDATE SUB-SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Update Lecture")
+    }
+    toast.success("Lecture Updated")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("UPDATE SUB-SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+// create a section
+export const createSection = async (data, token, dispatch) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+
+    await fetch(CREATE_SECTION_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token
+      },
+      body: JSON.stringify(data)
+    }).then(res => {
+      if (res?.status === 401) {
+        dispatch(removeUser())
+        dispatch(removeToken())
+        toast.error("Logout Suceessfully")
+      }
+       return res.json()
+    })
+    .then((res) => {
+        console.log(res);
+        if (res?.success) {
+          result = res
+          dispatch(removeUser())
+          dispatch(removeToken())
+          toast.success("section created successfully")
+        }
+
+      })
+      .catch((error) => {
+        console.log("Error in creating section", error);
+        toast.error("Error in creating section ");
+      })
+      .finally(console.log("Crete_section_api API completed............"))
+
+  } catch (error) {
+    //   console.log("CREATE SECTION API ERROR............", error)
+    //   toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+// update a section
+export const updateSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", UPDATE_SECTION_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("UPDATE SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Update Section")
+    }
+    toast.success("Course Section Updated")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("UPDATE SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+
+// delete a section
+export const deleteSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", DELETE_SECTION_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("DELETE SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Delete Section")
+    }
+    toast.success("Course Section Deleted")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("DELETE SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+// delete a subsection
+export const deleteSubSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", DELETE_SUBSECTION_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("DELETE SUB-SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Delete Lecture")
+    }
+    toast.success("Lecture Deleted")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("DELETE SUB-SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
 }
