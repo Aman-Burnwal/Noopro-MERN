@@ -12,13 +12,13 @@ exports.createCourse = async (req, res) => {
     try {
 
         // fetch data
-        const { courseName, coureDiscription, whatYouWillLearn, price, tag, category } = req.body;
+        const { courseName, coureDiscription, whatYouWillLearn, price, tag, category , instructions } = req.body;
 
         // get thumbnail
         const thumbnail = req.files.thumbnailImage;
 
         // validation
-        if (!courseName || !coureDiscription || !whatYouWillLearn || !price || !tag || !category) return res.status(400).json({
+        if (!courseName || !coureDiscription || !whatYouWillLearn || !price || !tag || !category || !instructions) return res.status(400).json({
             success: false,
             message: "All fields are required",
         })
@@ -53,6 +53,7 @@ exports.createCourse = async (req, res) => {
             price,
             tag: tagDetails._id,
             thumbnail: thumbnailImage.secure_url,
+            instructions,
         })
 
         // add the new course to the user schema of  instructor
