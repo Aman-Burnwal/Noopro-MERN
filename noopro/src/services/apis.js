@@ -15,4 +15,7 @@ export const GET_ENROLL_COURSE_API = import.meta.env.VITE_BASE_URL + "/profile/g
 export const CREATE_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/createCourse"
 export const EDIT_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/editCourse"
 export const CREATE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/addSection";
-
+export const UPDATE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/updateSection"
+export const DELETE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/deleteSection"
+export const CREATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/addSubSection"
+export const UPDATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/updateSubSection"
