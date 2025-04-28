@@ -52,14 +52,14 @@ exports.updateSection = async (req, res) => {
     try {
 
         // fetch data
-        const { sectionName, sectionId } = req.body;
+        const { sectionName, sectionId ,courseId} = req.body;
         // validate data
         if (!sectionId || !sectionName) return res.status(400).json({
             success: false,
             message: "All fields are required"
         })
         // update data 
-        const updatedSection = await Section.findByIdAndUpdate(sectionId, 
+        await Section.findByIdAndUpdate(sectionId, 
             {
                 sectionName
             },
@@ -67,10 +67,12 @@ exports.updateSection = async (req, res) => {
         )
         // return res
 
+        const updatedCourseDetails = await Course.findById(courseId).populate("courseContent").exec();
+
         return res.status(200).json({
             success: true,
             message: "Section updated successfully",
-            updatedSection,
+            updatedCourseDetails,
         })
 
     } catch (error) {
@@ -88,17 +90,31 @@ exports.deleteSection = async (req, res) => {
 
     try {
         // fetch the id 
-        const {sectionId} = req.params;
+        const {sectionId , courseId} = req.body;
+        console.log("courseId", courseId, sectionId)
 
         // find by id and delete
         await Section.findByIdAndDelete(sectionId);
+
+        const updatedCourse = await Course.findByIdAndUpdate(
+            courseId, {
+            $pull: {
+                courseContent: sectionId, 
+            },
+
+        },
+            { new: true }
+
+        ).populate("courseContent").exec();
+
 
         
         // return response
 
         return res.status(200).json({
             success: true,
-            message: "Section deleted from the data base"
+            message: "Section deleted from the data base",
+            updatedCourse
         })
 
 
