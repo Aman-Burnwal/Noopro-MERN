@@ -34,11 +34,11 @@ exports.createCourse = async (req, res) => {
         })
 
         // check given tag is valid or not 
-        const tagDetails = await Category.findById({_id:category});
+        const categorys = await Category.findById({_id:category});
 
-        if (!tagDetails) return res.status(400).json({
+        if (!categorys) return res.status(400).json({
             success: false,
-            message: "tagDetails not  found",
+            message: "catogory not  found",
         })
 
         const thumbnailImage = await uploadImageToCloudinay(thumbnail, process.env.FOLDER_NAME);
@@ -51,9 +51,10 @@ exports.createCourse = async (req, res) => {
             insturctor: instructorDetails._id,
             whatYouWillLearn: whatYouWillLearn,
             price,
-            tag: tagDetails._id,
+            category: categorys._id,
+            tag: JSON.parse(tag),
             thumbnail: thumbnailImage.secure_url,
-            instructions,
+            instructions : JSON.parse(instructions),
         })
 
         // add the new course to the user schema of  instructor
