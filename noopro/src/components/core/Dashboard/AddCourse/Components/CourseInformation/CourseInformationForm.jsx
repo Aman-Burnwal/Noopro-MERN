@@ -154,7 +154,7 @@ export default function CourseInformationForm() {
     setLoading(true)
    
     const result = await addCourseDetails(newFromdata, token, dispatch)
-    if (result && result.length) {
+    if (result) {
       console.log("course added successfully");
       console.log(result)
       dispatch(setStep(2))
