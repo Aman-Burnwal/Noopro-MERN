@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux"
 // import { setCourse } from "../../../../../../slices/courseSlice"
 import ConfirmationModal from "../../../../common/ConfirmationModal"
 import SubSectionModal from "./SubSectionModal"
-import { deleteSubSection } from "../../../../../../hook/profile"
+import { deleteSection, deleteSubSection } from "../../../../../../hook/profile"
 import { setCourse } from "../../../../../../../store/slice/courseSlice"
 
 export default function NestedView({ handleChangeEditSectionName }) {
@@ -25,11 +25,14 @@ export default function NestedView({ handleChangeEditSectionName }) {
   const [confirmationModal, setConfirmationModal] = useState(null)
 
   const handleDeleleSection = async (sectionId) => {
-    const result = await deleteSubSection({
-      sectionId,
+    console.log(course._id)
+    console.log("delete Section cliked")
+    const result = await deleteSection({
       courseId: course._id,
-      token,
-    })
+      sectionId,
+      
+     
+    },  token, dispatch)
     if (result) {
       dispatch(setCourse(result))
     }
@@ -48,14 +51,14 @@ export default function NestedView({ handleChangeEditSectionName }) {
     }
     setConfirmationModal(null)
   }
-
+  console.log(course?.courseContent);
   return (
     <>
       <div
         className="rounded-lg bg-richblack-700 p-6 px-8"
         id="nestedViewContainer"
       >
-        {course?.courseContent?.map((section) => (
+        {course && course?.courseContent?.map((section) => (
           // Section Dropdown
           <details key={section._id} open>
             {/* Section Dropdown Content */}
@@ -95,9 +98,10 @@ export default function NestedView({ handleChangeEditSectionName }) {
                 <AiFillCaretDown className={`text-xl text-richblack-300`} />
               </div>
             </summary>
+            {/* {console.log(" section is ", section )} */}
             <div className="px-6 pb-4">
               {/* Render All Sub Sections Within a Section */}
-              {section.subSection.map((data) => (
+              {section.SubSection.length && section.SubSection.map((data) => (
                 <div
                   key={data?._id}
                   onClick={() => setViewSubSection(data)}
