@@ -5,7 +5,7 @@ import { removeUser } from "../../../store/slice/profileSlice"
 
 export const addCourseDetails = async (data, token, dispatch) => {
         
-        const result = [];
+        let result = null
 
         await fetch(CREATE_COURSE_API, {
                 method: "POST",
@@ -35,7 +35,8 @@ export const addCourseDetails = async (data, token, dispatch) => {
         })
                 .then(res => {
                         if(res && res.success ) {
-                          result.push(res?.data)
+                          console.log(res)
+                          result = res?.data;
                         }
                 })
                 .catch(error => console.log("The error is here ", error));
