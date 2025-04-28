@@ -31,7 +31,7 @@ export default function CourseBuilderForm() {
     setLoading(true)
 
     let result
-
+    console.log(editSectionName);
     if (editSectionName) {
       result = await updateSection(
         {
@@ -39,24 +39,25 @@ export default function CourseBuilderForm() {
           sectionId: editSectionName,
           courseId: course._id,
         },
-        token
+        token,
+        dispatch
       )
       // console.log("edit", result)
     } else {
       result = await createSection(
         {
           sectionName: data.sectionName,
-          courseId: course[0]._id,
+          courseId: course._id,
           
         },
         token
       )
     }
-    console.log(course[0]._id)
+    console.log(course._id, course)
   
     if (result) {
-      console.log("section result", result)
-      // dispatch(setCourse(result.updatedCourseDetails))
+      console.log("section result", result.updatedCourseDetails)
+      dispatch(setCourse(result.updatedCourseDetails))
       setEditSectionName(null)
       setValue("sectionName", "")
     }
@@ -69,6 +70,8 @@ export default function CourseBuilderForm() {
   }
 
   const handleChangeEditSectionName = (sectionId, sectionName) => {
+    console.log("handle section")
+    console.log(sectionId, sectionName , editSectionName)
     if (editSectionName === sectionId) {
       cancelEdit()
       return
@@ -97,7 +100,7 @@ export default function CourseBuilderForm() {
     dispatch(setStep(1))
     dispatch(setEditCourse(true))
   }
-
+  console.log(course.courseContent)
   return (
     <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
       <p className="text-2xl font-semibold text-richblack-5">Course Builder</p>
@@ -139,7 +142,7 @@ export default function CourseBuilderForm() {
           )}
         </div>
       </form>
-      {course?.courseContent?.length > 0 && (
+      {course && course.courseContent?.length > 0 && (
         <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
       )}
       {/* Next Prev Button */}
