@@ -38,7 +38,7 @@ export default function SubSectionModal({
     if (view || edit) {
       // console.log("modalData", modalData)
       setValue("lectureTitle", modalData.title)
-      setValue("lectureDesc", modalData.description)
+      setValue("lectureDesc", modalData.discription)
       setValue("lectureVideo", modalData.videoUrl)
     }
   }, [])
@@ -49,7 +49,7 @@ export default function SubSectionModal({
     // console.log("changes after editing form values:", currentValues)
     if (
       currentValues.lectureTitle !== modalData.title ||
-      currentValues.lectureDesc !== modalData.description ||
+      currentValues.lectureDesc !== modalData.discription ||
       currentValues.lectureVideo !== modalData.videoUrl
     ) {
       return true
@@ -68,14 +68,14 @@ export default function SubSectionModal({
     if (currentValues.lectureTitle !== modalData.title) {
       formData.append("title", currentValues.lectureTitle)
     }
-    if (currentValues.lectureDesc !== modalData.description) {
-      formData.append("description", currentValues.lectureDesc)
+    if (currentValues.lectureDesc !== modalData.discription) {
+      formData.append("discription", currentValues.lectureDesc)
     }
     if (currentValues.lectureVideo !== modalData.videoUrl) {
       formData.append("video", currentValues.lectureVideo)
     }
     setLoading(true)
-    const result = await updateSubSection (formData, token)
+    const result = await updateSubSection (formData, token , dispatch)
     if (result) {
       // console.log("result", result)
       // update the structure of course
@@ -105,10 +105,10 @@ export default function SubSectionModal({
     const formData = new FormData()
     formData.append("sectionId", modalData)
     formData.append("title", data.lectureTitle)
-    formData.append("description", data.lectureDesc)
-    formData.append("video", data.lectureVideo)
+    formData.append("discription", data.lectureDesc)
+    formData.append("videoFile", data.lectureVideo)
     setLoading(true)
-    const result = await createSubSection(formData, token)
+    const result = await createSubSection(formData, token , dispatch)
     if (result) {
       // update the structure of course
       const updatedCourseContent = course.courseContent.map((section) =>
@@ -167,22 +167,22 @@ export default function SubSectionModal({
               </span>
             )}
           </div>
-          {/* Lecture Description */}
+          {/* Lecture discription */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm text-richblack-5" htmlFor="lectureDesc">
-              Lecture Description{" "}
+              Lecture discription{" "}
               {!view && <sup className="text-pink-200">*</sup>}
             </label>
             <textarea
               disabled={view || loading}
               id="lectureDesc"
-              placeholder="Enter Lecture Description"
+              placeholder="Enter Lecture discription"
               {...register("lectureDesc", { required: true })}
               className="form-style resize-x-none min-h-[130px] w-full"
             />
             {errors.lectureDesc && (
               <span className="ml-2 text-xs tracking-wide text-pink-200">
-                Lecture Description is required
+                Lecture discription is required
               </span>
             )}
           </div>
