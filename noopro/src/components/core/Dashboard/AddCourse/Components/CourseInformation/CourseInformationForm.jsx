@@ -47,12 +47,13 @@ export default function CourseInformationForm() {
     // if form is in edit mode
     if (editCourse) {
       console.log("data populated", editCourse , course)
-      setValue("courseTitle", course.courseName)
-      setValue("courseShortDesc", course.courseDescription)
-      setValue("coursePrice", course.price)
+      console.log(course.category._id)
+      setValue("courseName", course.courseName)
+      setValue("coureDiscription", course.coureDiscription)
+      setValue("price", course.price)
       setValue("courseTags", course.tag)
-      setValue("courseBenefits", course.whatYouWillLearn)
-      setValue("courseCategory", course.category)
+      setValue("whatYouWillLearn", course.whatYouWillLearn)
+      setValue("courseCategory", course.category._id)
       setValue("courseRequirements", course.instructions)
       setValue("thumbnailImage", course.thumbnail)
     }
@@ -245,7 +246,7 @@ export default function CourseInformationForm() {
           </option>
           {!loading &&
             courseCategories?.map((category, indx) => (
-              <option key={indx} value={category?._id}>
+              <option key={indx} selected={course &&  category?._id == course.category} value={category?._id}>
                 {category?.name}
               </option>
             ))}
