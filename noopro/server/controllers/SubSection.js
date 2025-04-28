@@ -1,4 +1,5 @@
 const { uploadImageToCloudinay } = require("../utils/imageUploader");
+const { getVideoDurationInSeconds } = require('get-video-duration')
 
 const SubSection = require("../model/SubSection");
 const Section = require("../model/Section");
@@ -6,19 +7,29 @@ require("dotenv").config();
 
 // create Subsection 
 
+
+
 exports.createSubSection = async (req, res) => {
 
     try {
-        const {sectionId, title, timeDuration, discription} = req.body;
+        const {sectionId, title, discription} = req.body;
+        let timeDuration = 2;
+        
 
         const video = req.files.videoFile;
 
         if(!sectionId || !title || !timeDuration || !discription) return res.status(400).json({
             success: false,
             message: "All fileds are required"
-        })
+        })       
 
         const uploadDetails  = await uploadImageToCloudinay(video, process.env.FOLDER_NAME);
+
+       await getVideoDurationInSeconds(uploadDetails.secure_url)
+        .then((duration) => {
+         timeDuration = duration
+        })
+
 
         const subSectionDetails = await SubSection.create(
             {
@@ -36,11 +47,12 @@ exports.createSubSection = async (req, res) => {
             },
             {new: true}
 
-        )
+        ).populate("SubSection").exec();
 
         return res.status(200).json({
             success: true,
-            message: "Succesfully created the subSection"
+            message: "Succesfully created the subSection",
+            updatedSection
         })
     } catch (error) {
 
@@ -62,7 +74,7 @@ exports.updateSubSection = async (req, res) => {
 
     try {
 
-        const {subSectionId, title, timeDuration, discription} = req.body;
+        const {subSectionId, sectionId, title, discription} = req.body;
 
         if(!subSectionId) return res.status(401).json({
             success:false, 
@@ -78,14 +90,21 @@ exports.updateSubSection = async (req, res) => {
 
         const updatedSubsection = await SubSection.findByIdAndUpdate({_id: subSectionId}, {
             title: title, 
+            discription : discription
         
 
         }, {new: true})
+        const updatedSection = await Section.findByIdAndUpdate(
+            {_id:sectionId}, 
+            
+            {new: true}
+
+        ).populate("SubSection").exec();
 
         res.status(200).json({
             success: true,
             message: "updated successfull",
-            updatedSubsection,
+            updatedSection,
         })
         
     } catch (error) {
