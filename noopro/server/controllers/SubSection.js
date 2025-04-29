@@ -129,7 +129,7 @@ exports.deleteSubSection = async (req, res) => {
 
     try {
 
-        const {subSectionId} = req.body;
+        const {subSectionId , sectionId} = req.body;
 
         if(!subSectionId) return res.status(401).json({
             success:false, 
