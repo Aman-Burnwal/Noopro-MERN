@@ -45,21 +45,50 @@ export const addCourseDetails = async (data, token, dispatch) => {
 }
 
 
-export const editCourseDetails = async (data, token) => {
+export const editCourseDetails = async (data, token , dispatch) => {
         let result = null
       
         const toastId = toast.loading("Loading...")
         try {
-                const response = fetch("POST", EDIT_COURSE_API, data, {
-                        "Content-Type": "multipart/form-data",
-                        Authorization: `Bearer ${token}`,
-                })
-                console.log("EDIT COURSE API RESPONSE............", response)
-                if (!response?.data?.success) {
-                        throw new Error("Could Not Update Course Details")
+                let result = null
+                await fetch( EDIT_COURSE_API,
+                        {
+                                method: "POST",
+                                headers :{
+                                         Authorization: `Bearer${token}`,
+                                },
+                                body: data,
+                        }
+                        
+                        ).then((res) => {
+console.log(res)
+                if (res.status == 401) {
+                        dispatch(removeToken());
+                        dispatch(removeUser());
+                        console.log("Heye it's error time")
+                        return;
                 }
+                console.log("In Res 1 ", res)
+
+                if (res.status == 200) {
+
+                        toast.success("Course Details Added Successfully")
+                }
+
+                return res.json()
+        })
+                .then(res => {
+                        if(res && res.success ) {
+                          console.log(res)
+                          result = res?.data;
+                        }
+                })
+                .catch(error => console.log("The error is here ", error));
+        console.log(result);
+               
+              
                 toast.success("Course Details Updated Successfully")
-                result = response?.data?.data
+                return result;
         } catch (error) {
                 console.log("EDIT COURSE API ERROR............", error)
                 toast.error(error.message)
