@@ -51,6 +51,7 @@ import EnrolledCourses from "../components/core/Dashboard/EnrolledCourses";
 import { getUserEnrolledCourses } from "../hook/profile";
 import Cart from "../components/core/Dashboard/Cart/index";
 import AddCourse from "../components/core/Dashboard/AddCourse";
+import MyCourses from "../components/core/Dashboard/Instructor_Dasboard/MyCourses";
 
 
 
@@ -73,7 +74,7 @@ export {
     PasswordComponent, IconBtn, EditProfile, updateProfilePictue, ProfilePictureAPI, 
     Settings, EnrolledCourses, getUserEnrolledCourses, Cart,
 
-    AddCourse,
+    AddCourse, MyCourses,
 
 
  }

@@ -242,3 +242,45 @@ exports.getCourseDetails = async (req, res) => {
 
     }
 }
+
+
+exports.getInstructorCourses = async (req, res) => {
+
+    try {
+        const userId = req.user.id;
+
+        const instructorDetails = await User.findById(userId);
+        // console.log(instructorDetails);
+        if (!instructorDetails ) return res.status(400).json({
+            success: false,
+            message: "Instructor details not found",
+        })
+
+        if(instructorDetails.accountType != "Instructor") return res.status(401).json({
+          success: false,
+          message : "commonsense wali baat hai dear jab aap guruji ho hi nhi mere platform me to aap koi course launch kaise kar sakte ho aur jab couse hi nhi launch kiya to dikhau kya ghanta",
+          sollution : "Insturctor id se login kijiye ya account banayea"
+        })
+        // console.log("got the course")
+
+        // console.log(instructorDetails)
+
+
+        const course = await User.findById(userId).populate("courses").exec();
+
+        // console.log(course);
+
+        return res.status(200).json({
+          success: true,
+          message: "Found all data", 
+          courses: course.courses
+        })
+    } catch (error) {
+        
+        return res.status(500).json({
+          success: false, 
+          message: "Internal Server error in getting insturctor couser",
+          error: error
+        })
+    }
+}
