@@ -19,3 +19,4 @@ export const UPDATE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/updat
 export const DELETE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/deleteSection"
 export const CREATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/addSubSection"
 export const UPDATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/updateSubSection"
+export const GET_ALL_INSTRUCTOR_COURSES_API = import.meta.env.VITE_BASE_URL + "/course/getInstructorCourses"
