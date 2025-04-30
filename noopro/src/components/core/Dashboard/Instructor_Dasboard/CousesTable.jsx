@@ -27,7 +27,7 @@ export default function CoursesTable({ courses, setCourses }) {
 
   const handleCourseDelete = async (courseId) => {
     setLoading(true)
-    await deleteCourse({ courseId: courseId }, token)
+    await deleteCourse({ courseId: courseId }, token , dispatch)
     const result = await fetchInstructorCourses( token , dispatch  )
     if (result) {
       //  console.log(result)
