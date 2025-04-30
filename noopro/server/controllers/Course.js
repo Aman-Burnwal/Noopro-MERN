@@ -243,6 +243,52 @@ exports.getCourseDetails = async (req, res) => {
     }
 }
 
+exports.getFullCourseDetails = async (req, res) => {
+
+    try {
+      
+      const {courseId} = req.body;
+      
+
+      if(!courseId) return res.status(403).json({
+        success: false,
+        message: "CourseId not found"
+      })
+
+      const course = await Course.findById(courseId);
+
+      if(!course) return  res.status(404).json({
+        success: false,
+        message: "Course id is wrong"
+      })
+      const courseDetails = await Course.findById(courseId)
+      .populate(
+        {
+          path: "courseContent",
+          populate: {
+            path: "SubSection"
+          }
+        }
+      ).exec();
+
+      
+      
+
+      return res.status(200).json({
+        success: true,
+        message: "Course Details found successfully",
+        data : courseDetails
+      })
+
+
+    } catch (error) {
+      return res.status(500).json({
+        message: "Internal Server error in Getting Course Details",
+        error: error,
+        success: false,
+      })
+    }
+}
 
 exports.getInstructorCourses = async (req, res) => {
 
@@ -282,5 +328,54 @@ exports.getInstructorCourses = async (req, res) => {
           message: "Internal Server error in getting insturctor couser",
           error: error
         })
+    }
+}
+
+exports.deleteCourse = async (req, res) => {
+    try {
+
+       const {courseId} = req.body;
+      
+
+      if(!courseId) return res.status(403).json({
+        success: false,
+        message: "CourseId not found"
+      })
+
+      const course = await Course.findById(courseId);
+
+      if(!course) return  res.status(404).json({
+        success: false,
+        message: "Course id is wrong"
+      })
+
+      // const courseDetails = await Course.findById(courseId)
+      // .populate(
+      //   {
+      //     path: "courseContent",
+      //     populate: {
+      //       path: "SubSection"
+      //     }
+      //   }
+      // ).exec();
+
+      
+      //  require delte every section subsection data than delete courseId
+
+      await Course.findByIdAndDelete(courseId);
+
+      return res.status(200).json({
+        success: true,
+        message: "This course is deleted Successfully"
+      })
+
+      
+    } catch (error) {
+      
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server error in deleting course",
+        error: error
+      })
     }
 }
