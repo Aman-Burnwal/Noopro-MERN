@@ -20,3 +20,5 @@ export const DELETE_SECTION_API = import.meta.env.VITE_BASE_URL + "/course/delet
 export const CREATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/addSubSection"
 export const UPDATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/updateSubSection"
 export const GET_ALL_INSTRUCTOR_COURSES_API = import.meta.env.VITE_BASE_URL + "/course/getInstructorCourses"
+export const GET_FULL_COURSE_DETAILS_AUTHENTICATED = import.meta.env.VITE_BASE_URL + "/course/getFullCourseDetails"
+export const DELETE_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/deleteCourse"
