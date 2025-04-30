@@ -61,14 +61,14 @@ export const editCourseDetails = async (data, token , dispatch) => {
                         }
                         
                         ).then((res) => {
-console.log(res)
+// console.log(res)
                 if (res.status == 401) {
                         dispatch(removeToken());
                         dispatch(removeUser());
                         console.log("Heye it's error time")
                         return;
                 }
-                console.log("In Res 1 ", res)
+                // console.log("In Res 1 ", res)
 
                 if (res.status == 200) {
 
@@ -84,7 +84,7 @@ console.log(res)
                         }
                 })
                 .catch(error => console.log("The error is here ", error));
-        console.log(result);
+        // console.log(result);
                
               
                 toast.success("Course Details Updated Successfully")
