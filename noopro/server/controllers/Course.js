@@ -220,8 +220,7 @@ exports.getCourseDetails = async (req, res) => {
                 }
             ).exec();
 
-
-            if(!CourseDetails) return res.status(400).json({
+            if(!CourseDetails || CourseDetails.length == 0) return res.status(400).json({
                 success: false,
                 message: `Could not find the course with ${courseId}`
             })
