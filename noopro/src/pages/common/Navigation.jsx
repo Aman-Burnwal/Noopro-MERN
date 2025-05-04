@@ -67,7 +67,7 @@ const Navigation = () => {
                                                         </div>
                                                         {subLinks.length > 0 ?
                                                             <div className=" invisible group-hover:visible">
-                                                                <div className="absolute  bg-richblack-5 w-[250px] 
+                                                                <div className=" z-[150] absolute  bg-richblack-5 w-[250px] 
                                                             -translate-x-[20%] translate-y-[20px] transition-all duration-200 rounded
                                                             ">
                                                                     <ul className=" text-richblack-900 font-bold font-edu-sa  px-7 flex flex-col gap-4 py-4">
