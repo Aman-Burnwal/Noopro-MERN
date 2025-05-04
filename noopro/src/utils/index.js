@@ -53,6 +53,12 @@ import Cart from "../components/core/Dashboard/Cart/index";
 import AddCourse from "../components/core/Dashboard/AddCourse";
 import MyCourses from "../components/core/Dashboard/Instructor_Dasboard/MyCourses";
 import EditCourse from "../components/core/Dashboard/EditCourse/EditCourse";
+import CourseSlider from "../components/core/Catlog/CourseSlider";
+import Course_Card from "../components/core/Catlog/Course_Card";
+import RatingStars from "../components/RatingStars";
+import GetAvgRating from "../components/GetAvgRating";
+import { getAllCategoriesCourse , getCatalogaPageData } from "../hook/Courses";
+import Catalog from "../pages/Catlog";
 
 
 
@@ -77,5 +83,8 @@ export {
 
     AddCourse, MyCourses, EditCourse,
 
+    CourseSlider, Course_Card, Catalog,
+    RatingStars, GetAvgRating,
+    getAllCategoriesCourse, getCatalogaPageData,
 
  }
