@@ -59,6 +59,7 @@ import RatingStars from "../components/RatingStars";
 import GetAvgRating from "../components/GetAvgRating";
 import { getAllCategoriesCourse , getCatalogaPageData } from "../hook/Courses";
 import Catalog from "../pages/Catlog";
+import CourseDetails from "../pages/CourseDetails";
 
 
 
@@ -86,5 +87,6 @@ export {
     CourseSlider, Course_Card, Catalog,
     RatingStars, GetAvgRating,
     getAllCategoriesCourse, getCatalogaPageData,
+    CourseDetails,
 
  }
