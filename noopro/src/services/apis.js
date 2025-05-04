@@ -22,3 +22,5 @@ export const UPDATE_SUBSECTION_API = import.meta.env.VITE_BASE_URL + "/course/up
 export const GET_ALL_INSTRUCTOR_COURSES_API = import.meta.env.VITE_BASE_URL + "/course/getInstructorCourses"
 export const GET_FULL_COURSE_DETAILS_AUTHENTICATED = import.meta.env.VITE_BASE_URL + "/course/getFullCourseDetails"
 export const DELETE_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/deleteCourse"
+export const SHOW_ALL_CATAGORIES_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/showAllCategories";
+export const CATEGORIES_COURSE_API = import.meta.env.VITE_BASE_URL + "/course/getCategoryPageDetails"
