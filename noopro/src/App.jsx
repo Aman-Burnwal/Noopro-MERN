@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { About, AddCourse, Cart, ContactUs, Dashboard, EditCourse, EnrolledCourses, Error, Login, MyCourses, MyProfile, Navigation, ProtectedRoute, ResetPassword, Settings, SignUp } from "./utils"
+import { About, AddCourse, Cart, Catalog, ContactUs, Dashboard, EditCourse, EnrolledCourses, Error, Login, MyCourses, MyProfile, Navigation, ProtectedRoute, ResetPassword, Settings, SignUp } from "./utils"
 import { useSelector } from "react-redux"
 import { ACCOUNT_TYPE } from "./utils/constants"
 
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/catalog/:catalogName" element ={<Catalog />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
