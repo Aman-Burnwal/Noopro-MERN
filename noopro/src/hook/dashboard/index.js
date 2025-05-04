@@ -50,7 +50,7 @@ export const editCourseDetails = async (data, token , dispatch) => {
       
         const toastId = toast.loading("Loading...")
         try {
-                let result = null
+              
                 await fetch( EDIT_COURSE_API,
                         {
                                 method: "POST",
