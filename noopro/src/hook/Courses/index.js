@@ -1,5 +1,5 @@
 import toast from "react-hot-toast"
-import { CATEGORIES_COURSE_API, GET_COURSE_DETAILS_API, SHOW_ALL_CATAGORIES_COURSE_API } from "../../services/apis";
+import { CATEGORIES_COURSE_API, COURSE_PAYMENT_API, GET_COURSE_DETAILS_API, SHOW_ALL_CATAGORIES_COURSE_API } from "../../services/apis";
 import { removeUser } from "../../../store/slice/profileSlice";
 import { removeToken } from "../../../store/slice/authSlice";
 
@@ -152,7 +152,17 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                                 {
                                     Authorization: `Bearer ${token}`,
                                 })
+        const orderRes = false
 
+        await fetch(COURSE_PAYMENT_API, {
+                method: "POST",
+                headers: {
+                        Authorization: `Bearer${token}`,
+
+                },
+                body: JSON.stringify({courses})
+
+        })
         if(!orderResponse.data.success) {
             throw new Error(orderResponse.data.message);
         }
